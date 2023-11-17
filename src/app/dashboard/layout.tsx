@@ -9,7 +9,7 @@ type Props = {
 
 const Layout = (props:Props) => {
   return (
-    <div className='container'>
+    <div className='main-container'>
         <div className='sidebar'>
             <Sidebar/>
         </div>
