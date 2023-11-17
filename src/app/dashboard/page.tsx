@@ -1,20 +1,19 @@
-import Card from "@/components/dashboard_ui/card/card";
 import React from "react";
-import "./_dashboard.scss";
+import Card from "@/components/dashboard_ui/card/card";
+import { cardsData } from "../lib/data";
 import Rightbar from "@/components/dashboard_ui/rightbar/rightbar";
 import Transactions from "@/components/dashboard_ui/transactions/transactions";
 import Chart from "@/components/dashboard_ui/chart/chart";
+import "./_dashboard.scss";
 
-type Props = {};
-
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="middle-content">
         <div className="cards-container">
-          <Card />
-          <Card />
-          <Card />
+          {cardsData.map((data)=>(
+            <Card key={data.id} item={data}/>
+          ))}
         </div>
         <Transactions/>
         <Chart/>

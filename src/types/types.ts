@@ -10,3 +10,12 @@ export type TmenuCategory = {
   };
   
 export type TmenuItems = TmenuCategory[];
+
+export type TCardData = {
+  item: {
+      id: number,
+      title: string,
+      userTotal: number,
+      change: number,
+  }
+}

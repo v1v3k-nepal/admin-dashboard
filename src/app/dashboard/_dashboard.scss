@@ -14,10 +14,14 @@
             display: flex;
             gap: 20px;
             .middle-content{
+                flex: 3;
                 .cards-container{
                     display: flex;
                     gap: 20px;
                 }
+            }
+            .right-bar{
+                flex: 1;
             }
         }
     }

@@ -1,7 +1,7 @@
 .card-container{
     background-color: var(--bgSoft);
     border-radius: 10px;
-    width: 300px;
+    width: 100%;
     padding: 20px;
     display: flex;
     gap: 10px;
@@ -23,8 +23,15 @@
         .details{
             font-size: 14px;
             font-weight: 300;
+
+            .more-less{
+                margin: 0 5px;
+            }
             .positive{
                 color: lime;
+            }
+            .negative{
+                color: red;
             }
         }
     }
