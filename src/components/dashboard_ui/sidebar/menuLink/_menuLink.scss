@@ -1,0 +1,12 @@
+.menu-links{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    margin: 5px 0;
+    border-radius: 10px;
+
+    &:hover, &.active{
+        background-color: #2e374a;
+    }
+}

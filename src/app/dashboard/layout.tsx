@@ -1,6 +1,7 @@
 import Navbar from '@/components/dashboard_ui/navbar/navbar'
 import Sidebar from '@/components/dashboard_ui/sidebar/sidebar'
 import React from 'react'
+import "./_dashboard.scss"
 
 type Props = {
   children: React.ReactNode
@@ -8,11 +9,11 @@ type Props = {
 
 const Layout = (props:Props) => {
   return (
-    <div>
-        <div>
+    <div className='container'>
+        <div className='sidebar'>
             <Sidebar/>
         </div>
-        <div>
+        <div className='content'>
             <Navbar/>
             {props.children}
         </div>
