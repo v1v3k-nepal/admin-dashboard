@@ -1,0 +1,51 @@
+.transactions-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bgSoft);
+  h1 {
+    margin-bottom: 20px;
+    font-weight: 200;
+    color: var(--textSoft);
+  }
+  table {
+    width: 100%;
+    thead td{
+      padding: 10px;
+    }
+    tbody {
+      tr {
+        align-items: center;
+        td {
+          color: var(--text);
+          padding: 10px;
+          .name-img{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .img {
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .status{
+          padding: 5px;
+          border-radius: 5px;
+          font-size: 14px;
+        }
+        .pending{
+          background-color: #f8c25675;
+        }
+        
+        .completed{
+          background-color: #1ef95175;
+        }
+        
+        .cancelled{
+          background-color: #fc5e5e75;
+        }
+      }
+    }
+  }
+}

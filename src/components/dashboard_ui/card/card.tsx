@@ -3,8 +3,7 @@ import { MdSupervisedUserCircle } from 'react-icons/md'
 import { TCardData } from '@/types/types'
 import "./_card.scss"
 
-const Card = (props:TCardData) => {
-    const {item} = props; 
+const Card = ({item}:{item:TCardData}) => { 
   return (
     <div className='card-container'>
         <MdSupervisedUserCircle size={24}/>
