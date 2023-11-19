@@ -3,6 +3,7 @@ import React from 'react'
 import { MdNotifications, MdOutlineChat, MdPublic, MdSearch } from 'react-icons/md'
 import "./_navbar.scss"
 import { usePathname } from 'next/navigation'
+import Search from '../search/search'
 
 
 const Navbar = () => {
@@ -11,10 +12,7 @@ const Navbar = () => {
     <div className='navbar-container'>
       <div className='nav-title'>{pathname.split("/").pop()}</div>
       <div className="menu">
-        <div className="search">
-          <MdSearch/>
-          <input type="text" placeholder='Search...'/>
-        </div>
+        <Search placeholder='Search...'/>
         <div className="icons">
           <MdOutlineChat size={20} />
           <MdNotifications size={20} />

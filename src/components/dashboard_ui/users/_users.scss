@@ -9,20 +9,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-        .search{
-            display: flex;
-            gap: 10px;
-            background-color: #2e374a;
-            padding: 10px;
-            border-radius: 10px;
-
-            input{
-                background-color: transparent;
-                color: var(--text);
-                outline: none;
-                border: none;
-            }
-        }
+        
         button{
             padding: 10px;
             color: white;
@@ -65,21 +52,6 @@
                     background-color: crimson;
                 }
             }
-        }
-    }
-
-    .pagination-btns{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        button{
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: teal;
-            color: white;
-            cursor: pointer;
         }
     }
 }

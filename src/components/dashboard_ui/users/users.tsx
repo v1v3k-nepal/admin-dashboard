@@ -4,15 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usersData } from "@/app/lib/data";
 import "./_users.scss"
+import Pagination from "../pagination/pagination";
+import Search from "../search/search";
 
 const UsersUI = () => {
   return (
     <div className="users-container">
     <div className="top">
-      <div className="search">
-        <MdSearch />
-        <input type="text" placeholder="Search for a user" />
-      </div>
+      <Search placeholder="Search for a user..."/>
       <Link href="/dashboard/users/add">
         <button>Add New</button>
       </Link>
@@ -58,10 +57,7 @@ const UsersUI = () => {
         ))}
       </tbody>
     </table>
-    <div className="pagination-btns">
-      <button>Prev</button>
-      <button>Next</button>
-    </div>
+    <Pagination/>
   </div>
   )
 }
