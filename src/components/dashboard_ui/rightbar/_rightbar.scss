@@ -1,0 +1,52 @@
+.rightbar-card{
+    background: linear-gradient(to top, #182237, #253352);
+    border-radius: 10px;
+    padding: 20px 24px;
+    position: relative;
+    .img-container{
+        position: absolute;
+        right: 24px;
+        bottom: 20px;
+        height: 50%;
+        width: 50%;
+
+        .image{
+            object-fit: contain;
+            opacity: 0.2;
+        }
+    }
+    .text{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .title{
+            font-size: 15px;
+        }
+
+        .notification{
+            font-weight: bold;
+        }
+        .subtitle{
+            color: var(--textSoft);
+            font-weight: 500;
+            font-size: 12px;
+        }
+        .desc{
+            color: var(--textSoft);
+            font-size: 14px;
+        }
+    }
+    .btn{
+        margin-top: 20px;
+        background-color: #5d57c9;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: white;
+        cursor: pointer;
+    }
+}

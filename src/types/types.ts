@@ -35,3 +35,21 @@ export type TtransactionData = Array<{
 //   date: string;
 //   amount: number;
 // }[];
+
+export type TchartsData = Array<{
+  name: string,
+  visit: number,
+  click: number,
+}>
+
+export type TrightbarData = {
+  notification: string,
+  title: string,
+  subtitle: string,
+  image?: string,
+  desc: string,
+  button:{
+    icon: React.ReactNode,
+    text: string
+  }
+}[]
