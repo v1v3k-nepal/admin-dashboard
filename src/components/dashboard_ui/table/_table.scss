@@ -1,4 +1,4 @@
-.users-container{
+.table-container{
     margin-top: 20px;
     margin-right: 20px;
     padding: 20px;
@@ -27,11 +27,11 @@
             text-align: left
         }
         tbody tr td{
-            .user-details{
+            .details{
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                .user-img{
+                .img{
                     border-radius: 50%;
                 }
             }

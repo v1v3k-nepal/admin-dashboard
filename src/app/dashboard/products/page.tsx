@@ -1,10 +1,11 @@
 import React from 'react'
+import Product from '@/components/dashboard_ui/products/product'
 
-type Props = {}
-
-const Products = (props: Props) => {
+const Products = () => {
   return (
-    <div>Products</div>
+    <div>
+      <Product/>
+    </div>
   )
 }
 

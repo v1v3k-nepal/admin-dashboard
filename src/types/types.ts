@@ -50,7 +50,17 @@ export type TuserData = Array<{
   userName: string,
   userImg: string,
   email: string,
-  CreatedAt: string,
+  createdAt: string,
   role: string,
-  action: string,
+  status: string,
+}>
+
+export type TproductData = Array<{
+  id: number,
+  product: string,
+  productImg: string,
+  desc: string,
+  price: number,
+  createdAt: string,
+  stock: number,
 }>

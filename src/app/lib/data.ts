@@ -1,7 +1,14 @@
-import { TCardData, TchartsData, TrightbarData, TtransactionData, TuserData } from "@/types/types";
+import {
+  TCardData,
+  TchartsData,
+  TproductData,
+  TrightbarData,
+  TtransactionData,
+  TuserData,
+} from "@/types/types";
 import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
 
-export const cardsData:TCardData[] = [
+export const cardsData: TCardData[] = [
   {
     id: 1,
     title: "Total Users",
@@ -22,7 +29,7 @@ export const cardsData:TCardData[] = [
   },
 ];
 
-export const transactionData:TtransactionData = [
+export const transactionData: TtransactionData = [
   {
     id: 1,
     userName: "John Doe",
@@ -73,7 +80,7 @@ export const transactionData:TtransactionData = [
   },
 ];
 
-export const chartsData:TchartsData = [
+export const chartsData: TchartsData = [
   {
     name: "Sun",
     visit: 4000,
@@ -119,76 +126,134 @@ export const rightbarData: TrightbarData = [
     subtitle: "Takes 4 minutes to learn",
     desc: "learn how to effectively navigate and utilize the updated features of the admin dashboard with this concise guide.",
     button: {
-      icon: MdPlayCircleFilled({size:24}),
+      icon: MdPlayCircleFilled({ size: 24 }),
       text: "Watch",
     },
   },
   {
     notification: "🚀 Coming Soon",
     title:
-      "New server actions are available, partial pre-rendering is coming up!",
+      "New server statuss are available, partial pre-rendering is coming up!",
     subtitle: "Boost your productivity",
-    desc: "Discover the latest enhancements: New server actions are at your fingertips, and partial prerendering is just around the corner.",
+    desc: "Discover the latest enhancements: New server statuss are at your fingertips, and partial prerendering is just around the corner.",
     button: {
-      icon: MdReadMore({size:24}),
+      icon: MdReadMore({ size: 24 }),
       text: "Learn",
     },
   },
 ];
 
-export const usersData:TuserData = [
+export const usersData: TuserData = [
+  
   {
     id: 1,
     userName: "John Doe",
     userImg: "/noavatar.png",
     email: "hello@gmail.com",
-    CreatedAt: "2023/05/24",
+    createdAt: "2023/05/24",
     role: "client",
-    action: "active",
+    status: "active",
   },
   {
     id: 2,
     userName: "Munna Bhai",
     userImg: "/noavatar.png",
     email: "munnabhai@gmail.com",
-    CreatedAt: "2023/05/22",
+    createdAt: "2023/05/22",
     role: "client",
-    action: "passive",
+    status: "passive",
   },
   {
     id: 3,
     userName: "Boleto Circuit",
     userImg: "/noavatar.png",
     email: "circuit@gmail.com",
-    CreatedAt: "2023/03/26",
+    createdAt: "2023/03/26",
     role: "client",
-    action: "active",
+    status: "active",
   },
   {
     id: 4,
     userName: "Vivek Nepal",
     userImg: "/noavatar.png",
     email: "vivek@gmail.com",
-    CreatedAt: "2023/08/12",
+    createdAt: "2023/08/12",
     role: "client",
-    action: "active",
+    status: "active",
   },
   {
     id: 5,
     userName: "Tony Stark",
     userImg: "/noavatar.png",
     email: "tonystark@gmail.com",
-    CreatedAt: "2023/08/12",
+    createdAt: "2023/08/12",
     role: "client",
-    action: "active",
+    status: "active",
   },
   {
     id: 6,
     userName: "Harry Bhai",
     userImg: "/noavatar.png",
     email: "harrybhai@gmail.com",
-    CreatedAt: "2023/08/12",
+    createdAt: "2023/08/12",
     role: "client",
-    action: "active",
+    status: "active",
   },
-]
+];
+
+export const productData: TproductData = [
+  {
+    id: 1,
+    product: "Iphone",
+    productImg: "/astronaut.png",
+    desc: "powerful, beautiful, durable",
+    price: 123,
+    createdAt: "2023/05/24",
+    stock: 34,
+  },
+  {
+    id: 2,
+    product: "Iphone",
+    productImg: "/astronaut.png",
+    desc: "powerful, beautiful, durable",
+    price: 123,
+    createdAt: "2023/05/24",
+    stock: 34,
+  },
+  {
+    id: 3,
+    product: "Iphone",
+    productImg: "/astronaut.png",
+    desc: "powerful, beautiful, durable",
+    price: 123,
+    createdAt: "2023/05/24",
+    stock: 34,
+  },
+  {
+    id: 4,
+    product: "Iphone",
+    productImg: "/astronaut.png",
+    desc: "powerful, beautiful, durable",
+    price: 123,
+    createdAt: "2023/05/24",
+    stock: 34,
+  },
+  {
+    id: 5,
+    product: "Iphone",
+    productImg: "/astronaut.png",
+    desc: "powerful, beautiful, durable",
+    price: 123,
+    createdAt: "2023/05/24",
+    stock: 34,
+  },
+  {
+    id: 6,
+    product: "Iphone",
+    productImg: "/astronaut.png",
+    desc: "powerful, beautiful, durable",
+    price: 123,
+    createdAt: "2023/05/24",
+    stock: 34,
+  },
+];
