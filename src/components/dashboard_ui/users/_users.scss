@@ -1,0 +1,85 @@
+.users-container{
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--bgSoft);
+
+    .top{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .search{
+            display: flex;
+            gap: 10px;
+            background-color: #2e374a;
+            padding: 10px;
+            border-radius: 10px;
+
+            input{
+                background-color: transparent;
+                color: var(--text);
+                outline: none;
+                border: none;
+            }
+        }
+        button{
+            padding: 10px;
+            color: white;
+            background-color: #5d57c9;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+
+    table{
+        width: 100%;
+        thead th, tbody td{
+            padding: 10px;
+            text-align: left
+        }
+        tbody tr td{
+            .user-details{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                .user-img{
+                    border-radius: 50%;
+                }
+            }
+            .btn-container{
+                display: flex;
+                gap: 10px;
+                button{
+                    padding: 10px;
+                    border: none;
+                    color: white;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .view{
+                    background-color: teal;
+                }
+                .delete{
+                    background-color: crimson;
+                }
+            }
+        }
+    }
+
+    .pagination-btns{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        button{
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: teal;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}

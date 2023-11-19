@@ -27,15 +27,6 @@ export type TtransactionData = Array<{
   amount: number;
 }>;
 
-// export type TtransactionData2 = {
-//   id: number;
-//   userName: string;
-//   userImg: string;
-//   status: string;
-//   date: string;
-//   amount: number;
-// }[];
-
 export type TchartsData = Array<{
   name: string,
   visit: number,
@@ -53,3 +44,13 @@ export type TrightbarData = {
     text: string
   }
 }[]
+
+export type TuserData = Array<{
+  id: number,
+  userName: string,
+  userImg: string,
+  email: string,
+  CreatedAt: string,
+  role: string,
+  action: string,
+}>

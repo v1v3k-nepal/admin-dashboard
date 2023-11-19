@@ -1,4 +1,4 @@
-import { TCardData, TchartsData, TrightbarData, TtransactionData } from "@/types/types";
+import { TCardData, TchartsData, TrightbarData, TtransactionData, TuserData } from "@/types/types";
 import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
 
 export const cardsData:TCardData[] = [
@@ -135,3 +135,60 @@ export const rightbarData: TrightbarData = [
     },
   },
 ];
+
+export const usersData:TuserData = [
+  {
+    id: 1,
+    userName: "John Doe",
+    userImg: "/noavatar.png",
+    email: "hello@gmail.com",
+    CreatedAt: "2023/05/24",
+    role: "client",
+    action: "active",
+  },
+  {
+    id: 2,
+    userName: "Munna Bhai",
+    userImg: "/noavatar.png",
+    email: "munnabhai@gmail.com",
+    CreatedAt: "2023/05/22",
+    role: "client",
+    action: "passive",
+  },
+  {
+    id: 3,
+    userName: "Boleto Circuit",
+    userImg: "/noavatar.png",
+    email: "circuit@gmail.com",
+    CreatedAt: "2023/03/26",
+    role: "client",
+    action: "active",
+  },
+  {
+    id: 4,
+    userName: "Vivek Nepal",
+    userImg: "/noavatar.png",
+    email: "vivek@gmail.com",
+    CreatedAt: "2023/08/12",
+    role: "client",
+    action: "active",
+  },
+  {
+    id: 5,
+    userName: "Tony Stark",
+    userImg: "/noavatar.png",
+    email: "tonystark@gmail.com",
+    CreatedAt: "2023/08/12",
+    role: "client",
+    action: "active",
+  },
+  {
+    id: 6,
+    userName: "Harry Bhai",
+    userImg: "/noavatar.png",
+    email: "harrybhai@gmail.com",
+    CreatedAt: "2023/08/12",
+    role: "client",
+    action: "active",
+  },
+]

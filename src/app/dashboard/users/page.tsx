@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import UsersUI from "@/components/dashboard_ui/users/users";
 
-type Props = {}
-
-const Users = (props: Props) => {
+const Users = () => {
   return (
-    <div>Users</div>
-  )
-}
+    <div>
+      <UsersUI/>
+    </div>
+  );
+};
 
-export default Users
+export default Users;
