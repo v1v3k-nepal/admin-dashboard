@@ -1,11 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { rightbarData} from '@/app/lib/data'
-import { TrightbarData } from '@/types/types'
 import "./_rightbar.scss"
 
 const Rightbar = () => {
-  const rightbarDataNew:TrightbarData = rightbarData;
+  const rightbarDataNew:Com.TrightbarData = rightbarData;
   return (
     <>
     {rightbarDataNew.map((item)=>(
