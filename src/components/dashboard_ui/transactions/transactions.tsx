@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { TtransactionData } from "@/types/types";
 import "./_transactions.scss";
 
-const Transactions = (props: { transactionData: TtransactionData }) => {
+const Transactions = (props: { transactionData: Com.TtransactionData }) => {
   const { transactionData } = props;
   return (
     <div className="transactions-container">

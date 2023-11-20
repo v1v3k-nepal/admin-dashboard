@@ -15,8 +15,6 @@ import {
 import "./_sidebar.scss";
 import Image from "next/image";
 
-type Props = {};
-
 const menuItems:Com.TmenuItems = [
   {
     title: "Pages",
