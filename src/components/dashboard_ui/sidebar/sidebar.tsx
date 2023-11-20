@@ -1,6 +1,5 @@
 import React from "react";
 import MenuLink from "./menuLink/menuLink";
-import { TmenuItems } from "@/types/types";
 import {
   MdDashboard,
   MdSupervisedUserCircle,
@@ -18,7 +17,7 @@ import Image from "next/image";
 
 type Props = {};
 
-const menuItems:TmenuItems = [
+const menuItems:Com.TmenuItems = [
   {
     title: "Pages",
     list: [
@@ -81,11 +80,11 @@ const menuItems:TmenuItems = [
   },
 ];
 
-const Sidebar = (props: Props) => {
+const Sidebar = () => {
   return (
     <div className="sidebar-container">
       <div className="user">
-        <Image src="/noavatar.png" alt="user image" height={50} width={50} className="userImg"/>
+        <Image src="/astronaut.png" alt="user image" height={50} width={50} className="userImg"/>
         <div className="userDetails">
           <span className="userName">Vivek Nepal</span>
           <span className="userRole">Administrator</span>

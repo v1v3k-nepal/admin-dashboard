@@ -13,11 +13,13 @@
         .userImg{
             border-radius: 50%;
             object-fit: cover;
+            cursor: pointer;
         }
         .userDetails{
             display: flex;
             flex-direction: column;
             text-align: left;
+            cursor: pointer;
 
             .userName{
                 font-weight: bold;
