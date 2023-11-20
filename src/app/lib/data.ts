@@ -1,14 +1,6 @@
-import {
-  TCardData,
-  TchartsData,
-  TproductData,
-  TrightbarData,
-  TtransactionData,
-  TuserData,
-} from "@/types/types";
 import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
 
-export const cardsData: TCardData[] = [
+export const cardsData: Com.TCardData[] = [
   {
     id: 1,
     title: "Total Users",
@@ -29,7 +21,7 @@ export const cardsData: TCardData[] = [
   },
 ];
 
-export const transactionData: TtransactionData = [
+export const transactionData: Com.TtransactionData = [
   {
     id: 1,
     userName: "John Doe",
@@ -80,7 +72,7 @@ export const transactionData: TtransactionData = [
   },
 ];
 
-export const chartsData: TchartsData = [
+export const chartsData: Com.TchartsData = [
   {
     name: "Sun",
     visit: 4000,
@@ -118,7 +110,7 @@ export const chartsData: TchartsData = [
   },
 ];
 
-export const rightbarData: TrightbarData = [
+export const rightbarData: Com.TrightbarData = [
   {
     notification: "🔥Available Now",
     image: "/astronaut.png",
@@ -143,7 +135,8 @@ export const rightbarData: TrightbarData = [
   },
 ];
 
-export const usersData: TuserData = [
+
+export const usersData = [
   
   {
     id: 1,
@@ -151,8 +144,9 @@ export const usersData: TuserData = [
     userImg: "/noavatar.png",
     email: "hello@gmail.com",
     createdAt: "2023/05/24",
-    role: "client",
-    status: "active",
+    role: "Client",
+    status: "Active",
+    actions: ["View", "Delete"]
   },
   {
     id: 2,
@@ -160,8 +154,9 @@ export const usersData: TuserData = [
     userImg: "/noavatar.png",
     email: "munnabhai@gmail.com",
     createdAt: "2023/05/22",
-    role: "client",
-    status: "passive",
+    role: "Client",
+    status: "Passive",
+    actions: ["View", "Delete"],
   },
   {
     id: 3,
@@ -169,17 +164,19 @@ export const usersData: TuserData = [
     userImg: "/noavatar.png",
     email: "circuit@gmail.com",
     createdAt: "2023/03/26",
-    role: "client",
-    status: "active",
+    role: "Client",
+    status: "Active",
+    actions: ["View", "Delete"]
   },
   {
     id: 4,
     userName: "Vivek Nepal",
-    userImg: "/noavatar.png",
+    userImg: "/astronaut.png",
     email: "vivek@gmail.com",
     createdAt: "2023/08/12",
-    role: "client",
-    status: "active",
+    role: "Client",
+    status: "Active",
+    actions: ["View", "Delete"]
   },
   {
     id: 5,
@@ -187,8 +184,9 @@ export const usersData: TuserData = [
     userImg: "/noavatar.png",
     email: "tonystark@gmail.com",
     createdAt: "2023/08/12",
-    role: "client",
-    status: "active",
+    role: "Client",
+    status: "Active",
+    actions: ["View", "Delete"]
   },
   {
     id: 6,
@@ -196,12 +194,13 @@ export const usersData: TuserData = [
     userImg: "/noavatar.png",
     email: "harrybhai@gmail.com",
     createdAt: "2023/08/12",
-    role: "client",
-    status: "active",
+    role: "Client",
+    status: "Active",
+    actions: ["View", "Delete"]
   },
 ];
 
-export const productData: TproductData = [
+export const productData = [
   {
     id: 1,
     product: "Iphone",
@@ -210,6 +209,7 @@ export const productData: TproductData = [
     price: 123,
     createdAt: "2023/05/24",
     stock: 34,
+    actions: ["View", "Delete"],
   },
   {
     id: 2,
@@ -219,6 +219,7 @@ export const productData: TproductData = [
     price: 123,
     createdAt: "2023/05/24",
     stock: 34,
+    actions: ["View", "Delete"],
   },
   {
     id: 3,
@@ -228,15 +229,17 @@ export const productData: TproductData = [
     price: 123,
     createdAt: "2023/05/24",
     stock: 34,
+    actions: ["View", "Delete"],
   },
   {
     id: 4,
     product: "Iphone",
-    productImg: "/astronaut.png",
+    productImg: "/noavatar.png",
     desc: "powerful, beautiful, durable",
     price: 123,
     createdAt: "2023/05/24",
     stock: 34,
+    actions: ["View", "Delete"],
   },
   {
     id: 5,
@@ -246,6 +249,7 @@ export const productData: TproductData = [
     price: 123,
     createdAt: "2023/05/24",
     stock: 34,
+    actions: ["View", "Delete"],
   },
   {
     id: 6,
@@ -255,5 +259,6 @@ export const productData: TproductData = [
     price: 123,
     createdAt: "2023/05/24",
     stock: 34,
+    actions: ["View", "Delete"],
   },
 ];
