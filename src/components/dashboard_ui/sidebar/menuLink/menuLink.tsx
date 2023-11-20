@@ -2,11 +2,10 @@
 import React from 'react'
 import "./_menuLink.scss"
 import Link from 'next/link'
-import { TmenuLink } from '@/types/types'
 import { usePathname } from 'next/navigation'
 
 type Props = {
-    item: TmenuLink
+    item: Com.TmenuLink
 }
 
 const MenuLink = (props: Props) => {
