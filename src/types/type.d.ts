@@ -66,17 +66,6 @@ declare namespace Com {
     stock: number;
   }>;
 
-  type TableColumns2<T, K extends Extract<keyof T, string>> = {
-    thead: string;
-    field: K;
-    render?: (item?: Partial<T[K]>, obj?: T) => React.ReactNode;
-  };
-
-  type TableProps2<T, K extends Extract<keyof T, string>> = {
-    data: T[];
-    columns: TableColumns<T, K>[];
-  };
-
   type TableColumns<T, K extends Extract<keyof T, string>> = {
     thead: string;
     field: K;

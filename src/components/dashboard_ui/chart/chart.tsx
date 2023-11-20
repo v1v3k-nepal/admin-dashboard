@@ -1,12 +1,11 @@
 "use client"
 import React from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { TchartsData } from '@/types/types'
 import { chartsData } from '@/app/lib/data'
 import "./_chart.scss"
 
 const Chart = () => {
-  const data:TchartsData = chartsData;
+  const data:Com.TchartsData = chartsData;
   return (
     <div className='charts-container'>
       <h2 className='title'>Weekly Recap</h2>
