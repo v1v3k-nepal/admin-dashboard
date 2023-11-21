@@ -11,8 +11,9 @@ const Card = ({item}:{item:Com.TCardData}) => {
             <p>{item.userTotal}</p>
             <div className="details">
                 <span className={`${item.change > 0? "positive": "negative"}`}>{item.change}%</span>
-                <span className='more-less'>{item.change > 0 ? "more": "less"}</span>
-                <span>than previous week</span>
+                <span>
+                  {item.change > 0 ? "more than previous week": "less than previous week"}
+                </span>
             </div>
         </div>
     </div>
