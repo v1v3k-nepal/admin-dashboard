@@ -9,21 +9,24 @@ const Product = () => {
   // const theadData = ["Product", "Description", "Created At", "Price", "Stock", "Action"]
   return (
     <div>
-      <Table data={productData} columns={
-        [
+      <Table
+        data={productData}
+        columns={[
           {
             thead: "Product",
             field: "product",
             render: (item, obj) => {
               return (
                 <div className="details">
-                  {obj?.productImg && <Image
-                    src={obj.productImg}
-                    alt="image icon"
-                    height={40}
-                    width={40}
-                    className="img"
-                  ></Image>}
+                  {obj?.productImg && (
+                    <Image
+                      src={obj.productImg}
+                      alt="image icon"
+                      height={40}
+                      width={40}
+                      className="img"
+                    ></Image>
+                  )}
                   <span>{item}</span>
                 </div>
               );
@@ -71,8 +74,8 @@ const Product = () => {
               );
             },
           },
-        ]
-      } />
+        ]}
+      />
     </div>
   );
 };

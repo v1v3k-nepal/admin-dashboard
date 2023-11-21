@@ -3,9 +3,12 @@ import Search from "../search/search";
 import Link from "next/link";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
+import AnimatedTd from "./animated_td";
 
-
-const Table = <T, K extends Extract<keyof T, string>>({data, columns }: Com.TableProps<T, K>) => {
+const Table = <T, K extends Extract<keyof T, string>>({
+  data,
+  columns,
+}: Com.TableProps<T, K>) => {
   return (
     <div className="table-container">
       <div className="top">
@@ -25,8 +28,10 @@ const Table = <T, K extends Extract<keyof T, string>>({data, columns }: Com.Tabl
         <tbody>
           {data.map((obj, index) => (
             <tr key={index}>
-              {columns.map((col)=>(
-                <td key={col.field}>{col.render?.(obj[col.field], obj)}</td>
+              {columns.map((col) => (
+                <AnimatedTd key={col.field} id={index}>
+                  {col.render?.(obj[col.field], obj)}
+                </AnimatedTd>
               ))}
             </tr>
           ))}
@@ -39,8 +44,8 @@ const Table = <T, K extends Extract<keyof T, string>>({data, columns }: Com.Tabl
 
 export default Table;
 
-
-              {/* <td>
+{
+  /* <td>
                 <div className="details">
                   <Image
                     src={item?.userImg || item?.productImg}
@@ -63,4 +68,5 @@ export default Table;
                   </Link>
                   <button className="delete">Delete</button>
                 </div>
-              </td> */}
+              </td> */
+}
