@@ -142,9 +142,9 @@ export const usersData = [
   
   {
     id: 1,
-    userName: "John Doe",
+    userName: "Chinnu Swami",
     userImg: "/noavatar.png",
-    email: "hello@gmail.com",
+    email: "chinnuswami@gmail.com",
     createdAt: "2023/05/24",
     role: "Client",
     status: "Active",
