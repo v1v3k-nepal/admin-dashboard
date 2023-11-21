@@ -1,26 +1,34 @@
-.details{
+.user-container, .product-container {
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bgSoft);
+
+  .details {
     display: flex;
     align-items: center;
     gap: 10px;
-    .img{
-        border-radius: 50%;
+    .img {
+      border-radius: 50%;
     }
-}
+  }
 
-.btn-container{
+  .btn-container {
     display: flex;
     gap: 10px;
-    button{
-        padding: 10px;
-        border: none;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
+    button {
+      padding: 10px;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .view{
-        background-color: teal;
+    .view {
+      background-color: teal;
     }
-    .delete{
-        background-color: crimson;
+    .delete {
+      background-color: crimson;
     }
+  }
 }

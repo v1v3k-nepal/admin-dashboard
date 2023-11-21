@@ -1,6 +1,4 @@
 import React from "react";
-import Search from "../search/search";
-import Link from "next/link";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
 import AnimatedTd from "./animated_td";
@@ -11,12 +9,6 @@ const Table = <T, K extends Extract<keyof T, string>>({
 }: Com.TableProps<T, K>) => {
   return (
     <div className="table-container">
-      <div className="top">
-        <Search placeholder="Search for a user..." />
-        <Link href="/dashboard/users/add">
-          <button>Add New</button>
-        </Link>
-      </div>
       <table>
         <thead>
           <tr>

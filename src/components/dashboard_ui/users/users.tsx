@@ -5,12 +5,14 @@ import { usersData } from "@/app/lib/data";
 import Image from "next/image";
 import "./_users.scss";
 import Link from "next/link";
+import { TableTopPart } from "../tableTopPart/tableTopPart";
 
 const UsersUI = () => {
   // const theadData:string[] = ["Name", "Email", "Created At", "Role", "Status", "Action"]
 
   return (
-    <div>
+    <div className="user-container">
+      <TableTopPart path="/dashboard/users/add" placeholder="Search for a User"/>
       <Table data={usersData} columns={
         [
           {

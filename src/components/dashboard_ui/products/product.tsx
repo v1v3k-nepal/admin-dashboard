@@ -4,11 +4,13 @@ import { productData } from "@/app/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import "../users/_users.scss";
+import { TableTopPart } from "../tableTopPart/tableTopPart";
 
 const Product = () => {
   // const theadData = ["Product", "Description", "Created At", "Price", "Stock", "Action"]
   return (
-    <div>
+    <div className="product-container">
+      <TableTopPart path="/dashboard/products/add" placeholder="Search for a Product..."/>
       <Table
         data={productData}
         columns={[
