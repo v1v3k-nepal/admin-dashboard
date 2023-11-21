@@ -112,6 +112,7 @@ export const chartsData: Com.TchartsData = [
 
 export const rightbarData: Com.TrightbarData = [
   {
+    id: 1,
     notification: "🔥Available Now",
     image: "/astronaut.png",
     title: "How to use new version of the admin dashboard ?",
@@ -123,6 +124,7 @@ export const rightbarData: Com.TrightbarData = [
     },
   },
   {
+    id: 2,
     notification: "🚀 Coming Soon",
     title:
       "New server statuss are available, partial pre-rendering is coming up!",

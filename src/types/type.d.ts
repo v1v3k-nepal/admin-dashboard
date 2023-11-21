@@ -35,6 +35,7 @@ declare namespace Com {
   }>;
 
   type TrightbarData = {
+    id: number;
     notification: string;
     title: string;
     subtitle: string;

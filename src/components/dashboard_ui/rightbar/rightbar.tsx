@@ -1,5 +1,7 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
+import {motion} from "framer-motion"
 import { rightbarData} from '@/app/lib/data'
 import "./_rightbar.scss"
 
@@ -8,7 +10,14 @@ const Rightbar = () => {
   return (
     <>
     {rightbarDataNew.map((item)=>(
-      <div className='rightbar-card' key={item.title}>
+      <motion.div className='rightbar-card' key={item.title}
+      initial={{x:100, opacity: 0}}
+      whileInView={{x: 0, opacity: 1}}
+      transition={{
+        delay: 0.3*item.id,
+        x:{type: "spring", stiffness: 60},
+        ease: "easeIn"
+      }}>
       {item.image && <div className="img-container">
         <Image src={item.image} alt="image" fill className='image'></Image>
       </div>}
@@ -22,7 +31,7 @@ const Rightbar = () => {
       {item.button.icon}
       {item.button.text}
       </button>
-    </div>
+    </motion.div>
     ))}
     </>
 
