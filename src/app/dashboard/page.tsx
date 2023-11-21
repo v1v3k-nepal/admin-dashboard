@@ -15,8 +15,8 @@ const Dashboard = () => {
             <Card key={data.id} item={data} />
           ))}
         </div>
-        <Transactions transactionData={transactionData} />
         <Chart />
+        <Transactions transactionData={transactionData} />
       </div>
       <div className="right-bar">
         <Rightbar />
