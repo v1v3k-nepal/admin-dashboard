@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 import MenuLink from "./menuLink/menuLink";
 import {
   MdDashboard,
@@ -15,7 +17,7 @@ import {
 import "./_sidebar.scss";
 import Image from "next/image";
 
-const menuItems:Com.TmenuItems = [
+const menuItems: Com.TmenuItems = [
   {
     title: "Pages",
     list: [
@@ -80,25 +82,54 @@ const menuItems:Com.TmenuItems = [
 
 const Sidebar = () => {
   return (
-    <div className="sidebar-container">
+    <motion.div
+      className="sidebar-container"
+      initial={{ x: -100, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{
+        delay: 0.01,
+        x: { type: "spring", stiffness: 60 },
+        opacity: { duration: 1 },
+      }}
+    >
       <div className="user">
-        <Image src="/astronaut.png" alt="user image" height={50} width={50} className="userImg"/>
+        <Image
+          src="/astronaut.png"
+          alt="user image"
+          height={50}
+          width={50}
+          className="userImg"
+        />
         <div className="userDetails">
           <span className="userName">Vivek Nepal</span>
           <span className="userRole">Administrator</span>
         </div>
       </div>
       <ul className="category">
-        {menuItems.map((category) => (
+        {menuItems.map((category, catIndex) => (
           <li key={category.title}>
-            <span className="category-title">{category.title}</span>
-            {category.list.map((item) => (
-              <MenuLink key={item.title} item={item} />
+            <span>
+              {category.title}
+            </span>
+            {category.list.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.3 * index * catIndex,
+                  x: { type: "spring", stiffness: 60 },
+                  opacity: { duration: 1 },
+                  ease: "easeIn"
+                }}
+              >
+                <MenuLink item={item} />
+              </motion.div>
             ))}
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 };
 
