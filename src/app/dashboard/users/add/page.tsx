@@ -7,8 +7,8 @@ const AddUser = () => {
       <div className="add-user-container">
         <div className="cols">
           <div className="col-left">
-            <input type="text" placeholder="username" />
-            <input type="password" placeholder="password" />
+            <input type="text" placeholder="Username" />
+            <input type="password" placeholder="Password" />
             <select name="isAdmin" id="isAdmin">
               <option value="false">Is Admin ?</option>
               <option value="true">Yes</option>
@@ -16,8 +16,8 @@ const AddUser = () => {
             </select>
           </div>
           <div className="col-right">
-            <input type="email" placeholder="email" />
-            <input type="phone" name="phone" id="phone" placeholder="phone" />
+            <input type="email" placeholder="Email" />
+            <input type="phone" name="phone" id="phone" placeholder="Phone" />
             <select name="isActive" id="isActive">
               <option value="false">Is Active ?</option>
               <option value="true">Yes</option>
