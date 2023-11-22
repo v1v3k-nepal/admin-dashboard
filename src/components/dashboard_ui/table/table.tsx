@@ -3,18 +3,18 @@ import React,{useState} from "react";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
 import AnimatedTd from "./animated_td";
-// import { usersData } from "@/app/lib/data";
 
 const Table = <T, K extends Extract<keyof T, string>>({
   data,
   columns,
 }: Com.TableProps<T, K>) => {
-
   const [currentPageData, setCurrentPageData] = useState(data);
+  const [currentPage, setCurrentPage] = useState(1);
   const newData = [...data, ...data, ...data, ...data]
 
-  const handlePageChange = (updatedData:T[])=>{
-    setCurrentPageData(updatedData)
+  const handlePageChange = (newPage:number, firstIndex:number, lastIndex: number)=>{
+    setCurrentPageData(newData.slice(firstIndex-1, lastIndex));
+    setCurrentPage(newPage);
   }
 
   return (
@@ -39,9 +39,12 @@ const Table = <T, K extends Extract<keyof T, string>>({
           ))}
         </tbody>
       </table>
-      <Pagination  
-      data={newData}
+      <div className="pagination">
+      <Pagination
+      currentPage={currentPage}
+      totalItem={newData.length}
       onPageChange={handlePageChange}/>
+      </div>
     </div>
   );
 };

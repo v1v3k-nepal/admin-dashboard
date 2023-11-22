@@ -11,7 +11,7 @@ const AnimatedTd = ({children, id}: Props) => {
   return (
     <motion.td
     initial={{scale: 0.5, opacity: 0, x: -100}} 
-    whileInView={{scale: 1, opacity: 1, x: 0}}
+    animate={{scale: 1, opacity: 1, x: 0}}
     transition={{
       delay: 0.2*id,
       x: {type: "spring", stiffness: 60},

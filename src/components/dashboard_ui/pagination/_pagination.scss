@@ -1,13 +1,11 @@
 .pagination-container{
+    margin-top: 20px;
     display: flex;
     align-items: center;
-    padding: 5px 10px;
+    justify-content: flex-end;
+    padding: 0px 10px;
     gap: 20px;
-    width: fit-content;
     font-size: 1rem;
-    // background-color: var(--hoverColor);
-    border-radius: 5px;
-    border: 2px solid white;
     .rows-per-page{
         display: flex;
         gap: 10px;
@@ -32,12 +30,13 @@
         }
     }
     button{
-        margin-top: 20px;
-        padding: 10px 20px;
+        background-color: transparent;
         border: none;
         border-radius: 5px;
-        background-color: teal;
         color: white;
         cursor: pointer;
+    }
+    .disabled{
+        background-color: var(--hoverColor);
     }
 }
