@@ -1,12 +1,22 @@
-import React from "react";
+"use client"
+import React,{useState} from "react";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
 import AnimatedTd from "./animated_td";
+// import { usersData } from "@/app/lib/data";
 
 const Table = <T, K extends Extract<keyof T, string>>({
   data,
   columns,
 }: Com.TableProps<T, K>) => {
+
+  const [currentPageData, setCurrentPageData] = useState(data);
+  const newData = [...data, ...data, ...data, ...data]
+
+  const handlePageChange = (updatedData:T[])=>{
+    setCurrentPageData(updatedData)
+  }
+
   return (
     <div className="table-container">
       <table>
@@ -18,7 +28,7 @@ const Table = <T, K extends Extract<keyof T, string>>({
           </tr>
         </thead>
         <tbody>
-          {data.map((obj, index) => (
+          {currentPageData.map((obj, index) => (
             <tr key={index}>
               {columns.map((col) => (
                 <AnimatedTd key={col.field} id={index}>
@@ -29,7 +39,9 @@ const Table = <T, K extends Extract<keyof T, string>>({
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination  
+      data={newData}
+      onPageChange={handlePageChange}/>
     </div>
   );
 };
