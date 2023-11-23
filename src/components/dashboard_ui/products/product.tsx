@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Table from "../table/table";
 import { productData } from "@/app/lib/data";
