@@ -206,7 +206,7 @@ export const productData = [
   {
     id: 1,
     product: "Iphone",
-    productImg: "/astronaut.png",
+    productImg: "/iphone-15-pro-max-white.webp",
     desc: "powerful, beautiful, durable",
     price: 123,
     createdAt: "2023/05/24",
@@ -216,7 +216,7 @@ export const productData = [
   {
     id: 2,
     product: "Iphone",
-    productImg: "/astronaut.png",
+    productImg: "/iphone-15-pro-max-white.webp",
     desc: "powerful, beautiful, durable",
     price: 123,
     createdAt: "2023/05/24",
@@ -226,7 +226,7 @@ export const productData = [
   {
     id: 3,
     product: "Iphone",
-    productImg: "/astronaut.png",
+    productImg: "/iphone-15-pro-max-white.webp",
     desc: "powerful, beautiful, durable",
     price: 123,
     createdAt: "2023/05/24",
@@ -256,7 +256,7 @@ export const productData = [
   {
     id: 6,
     product: "Iphone",
-    productImg: "/astronaut.png",
+    productImg: "/iphone-15-pro-max-white.webp",
     desc: "powerful, beautiful, durable",
     price: 123,
     createdAt: "2023/05/24",

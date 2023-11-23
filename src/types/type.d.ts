@@ -47,15 +47,19 @@ declare namespace Com {
     };
   }[];
 
-  type TuserData = Array<{
-    id: number;
-    userName: string;
+  type TuserData = {
+    _id: number;
+    username: string;
     userImg: string;
     email: string;
-    createdAt: string;
-    role: string;
-    status: string;
-  }>;
+    password: string;
+    phone: number;
+    address: string;
+    createdAt?: string;
+    isAdmin: boolean;
+    isActive: boolean;
+    actions: Array<string>;
+  }[];
 
   type TproductData = Array<{
     id: number;
