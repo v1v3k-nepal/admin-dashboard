@@ -13,7 +13,7 @@ const AddProduct = () => {
           <div className="col-right">
             <input type="text" placeholder="Stock" />
             <input type="text" placeholder="Size" />
-            <select name="isActive" id="isActive">
+            <select name="category" id="category">
               <option value="false">Choose a Category</option>
               <option value="Electronics">Electronics</option>
               <option value="Kitchen">Kitchen</option>

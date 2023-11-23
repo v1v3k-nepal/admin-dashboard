@@ -28,7 +28,7 @@ const UsersUI = () => {
                     width={40}
                     className="img"
                   ></Image>}
-                  <span>{item}</span>
+                  <span className="user-name">{item}</span>
                 </div>
               );
             },
@@ -37,7 +37,7 @@ const UsersUI = () => {
             thead: "Email",
             field: "email",
             render: (item) => {
-              return <span>{item}</span>;
+              return <span className="email">{item}</span>;
             },
           },
           {

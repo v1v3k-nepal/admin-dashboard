@@ -25,7 +25,7 @@ const AddUser = () => {
             </select>
           </div>
         </div>
-        <textarea name="textarea" id="textarea" cols={30} rows={10}></textarea>
+        <textarea name="textarea" id="textarea" cols={30} rows={10} placeholder="Address"></textarea>
         <button>Submit</button>
       </div>
     </form>

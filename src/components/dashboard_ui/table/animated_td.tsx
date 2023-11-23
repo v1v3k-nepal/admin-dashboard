@@ -9,7 +9,7 @@ type Props = {
 
 const AnimatedTd = ({children, id}: Props) => {
   return (
-    <motion.td
+    <motion.td className="table-data"
     initial={{scale: 0.5, opacity: 0, x: -100}} 
     animate={{scale: 1, opacity: 1, x: 0}}
     transition={{
