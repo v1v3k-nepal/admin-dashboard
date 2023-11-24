@@ -84,4 +84,12 @@ declare namespace Com {
     data: T[];
     columns: TableColumns<T, K>[];
   };
+
+  type TsearchParams = {
+    searchParams: {
+      q: string;
+      itemsPerPage: string;
+      page: string;
+    };
+  };
 }

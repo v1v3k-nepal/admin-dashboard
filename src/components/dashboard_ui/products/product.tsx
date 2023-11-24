@@ -1,13 +1,12 @@
 "use client";
 import React from "react";
 import Table from "../table/table";
-// import { productData } from "@/app/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import "../users/_users.scss";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
 
-const Product = ({ data }: { data: Com.TproductData }) => {
+const Product = ({ data }: { data?: Com.TproductData }) => {
   // const theadData = ["Product", "Description", "Created At", "Price", "Stock", "Action"]
   // console.log("i am product page", data);
   return (
@@ -17,7 +16,7 @@ const Product = ({ data }: { data: Com.TproductData }) => {
         placeholder="Search for a Product..."
       />
       <Table
-        data={data}
+        data={!!data ? data : []}
         columns={[
           {
             thead: "Product",
