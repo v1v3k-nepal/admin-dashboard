@@ -8,6 +8,10 @@
     background-color: var(--bgSoft);
     border-radius: 10px;
 
+    .nav-title{
+        text-transform: capitalize;
+    }
+
     .menu{
         display: flex;
         align-items: center;
