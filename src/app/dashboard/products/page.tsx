@@ -2,8 +2,11 @@ import React from "react";
 import Product from "@/components/dashboard_ui/products/product";
 import { fectchProducts } from "@/app/lib/fetchData";
 
-const Products = async () => {
-  const productData: any = await fectchProducts();
+const Products = async ({searchParams}:{searchParams: any}) => {
+  const q = searchParams?.q || "";
+  const itemsPerPage = searchParams?.itemsPerPage || 1;
+  const currentPage = searchParams?.page || 1;
+  const productData: any = await fectchProducts(q, itemsPerPage, currentPage);
   return (
     <div>
       <Product data={productData} />

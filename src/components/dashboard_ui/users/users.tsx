@@ -29,14 +29,14 @@ const UsersUI = ({data}:{data:Com.TuserData}) => {
                 <div className="details">
                   {obj?.userImg && (
                     <Image
-                      src={obj.userImg}
+                      src={obj?.userImg}
                       alt="image icon"
                       height={40}
                       width={40}
                       className="img"
                     ></Image>
                   )}
-                  <span className="user-name">{obj?.username}</span>
+                  <div className="user-name">{obj?.username}</div>
                 </div>
               );
             },
@@ -45,7 +45,7 @@ const UsersUI = ({data}:{data:Com.TuserData}) => {
             thead: "Email",
             field: "email",
             render: (item, obj) => {
-              return <span className="email">{obj?.email}</span>;
+              return <div className="email">{obj?.email}</div>;
             },
           },
           {

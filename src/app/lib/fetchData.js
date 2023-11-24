@@ -17,11 +17,15 @@ export const fetchUsers = async (q, itemsPerPage, page)=>{
     }
   }
 
-export const fectchProducts = async()=>{
+export const fectchProducts = async(q,itemsPerPage, page)=>{
   connectToDB();
+  const regex = new RegExp(q, "i");
   try{
-    const products = await Product.find();
-    return products
+    const products = await Product.find({productName: {$regex: regex}})
+    .limit(itemsPerPage)
+    .skip(itemsPerPage*(page -1));
+
+    return products;
   }catch(e){
     console.log("i am fetchProducts : error", e)
   }
