@@ -62,13 +62,16 @@ declare namespace Com {
   }[];
 
   type TproductData = Array<{
-    id: number;
-    product: string;
+    _id: number;
+    productName: string;
     productImg: string;
     desc: string;
     price: number;
     createdAt: string;
     stock: number;
+    actions: Array<string>;
+    color: string;
+    size: string;
   }>;
 
   type TableColumns<T, K extends Extract<keyof T, string>> = {

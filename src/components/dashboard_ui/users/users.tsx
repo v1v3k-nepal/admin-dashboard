@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "../table/table";
-// import {usersData } from "@/app/lib/data";
 import Image from "next/image";
 import "./_users.scss";
 import Link from "next/link";
@@ -11,6 +10,11 @@ const UsersUI = ({data}:{data:Com.TuserData}) => {
   // const theadData:string[] = ["Name", "Email", "Created At", "Role", "Status", "Action"]
 
   const newusersData = data;
+  console.log("i am userspage", data)
+
+  useEffect(()=>{
+    console.log("useEffect triggered")
+  },[data])
 
   return (
     <div className="user-container">

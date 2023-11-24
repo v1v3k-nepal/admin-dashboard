@@ -1,5 +1,5 @@
 "use client"
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
 import AnimatedTd from "./animated_td";
@@ -8,12 +8,12 @@ const Table = <T, K extends Extract<keyof T, string>>({
   data,
   columns,
 }: Com.TableProps<T, K>) => {
-  const [currentPageData, setCurrentPageData] = useState(data);
+  // const [currentPageData, setCurrentPageData] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
-  const newData = [...data, ...data, ...data, ...data]
+  // const newData = [...data, ...data, ...data, ...data]
 
   const handlePageChange = (newPage:number, firstIndex:number, lastIndex: number)=>{
-    setCurrentPageData(newData.slice(firstIndex-1, lastIndex));
+    // setCurrentPageData(newData.slice(firstIndex-1, lastIndex));
     setCurrentPage(newPage);
   }
 
@@ -28,7 +28,7 @@ const Table = <T, K extends Extract<keyof T, string>>({
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((obj, index) => (
+          {data.map((obj, index) => (
             <tr key={index}>
               {columns.map((col) => (
                 <AnimatedTd key={col.field} id={index}>
@@ -42,7 +42,7 @@ const Table = <T, K extends Extract<keyof T, string>>({
       <div className="pagination">
       <Pagination
       currentPage={currentPage}
-      totalItem={newData.length}
+      totalItem={data.length}
       onPageChange={handlePageChange}/>
       </div>
     </div>

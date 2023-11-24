@@ -1,23 +1,27 @@
-"use client"
+"use client";
 import React from "react";
 import Table from "../table/table";
-import { productData } from "@/app/lib/data";
+// import { productData } from "@/app/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import "../users/_users.scss";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
 
-const Product = () => {
+const Product = ({ data }: { data: Com.TproductData }) => {
   // const theadData = ["Product", "Description", "Created At", "Price", "Stock", "Action"]
+  // console.log("i am product page", data);
   return (
     <div className="product-container">
-      <TableTopPart path="/dashboard/products/add" placeholder="Search for a Product..."/>
+      <TableTopPart
+        path="/dashboard/products/add"
+        placeholder="Search for a Product..."
+      />
       <Table
-        data={productData}
+        data={data}
         columns={[
           {
             thead: "Product",
-            field: "product",
+            field: "productName",
             render: (item, obj) => {
               return (
                 <div className="details">
@@ -42,9 +46,16 @@ const Product = () => {
               return <span>{item}</span>;
             },
           },
+          // {
+          //   thead: "Created At",
+          //   field: "createdAt",
+          //   render: (item) => {
+          //     return <span>{item}</span>;
+          //   },
+          // },
           {
-            thead: "Created At",
-            field: "createdAt",
+            thead: "Color",
+            field: "color",
             render: (item) => {
               return <span>{item}</span>;
             },
@@ -53,7 +64,7 @@ const Product = () => {
             thead: "Price",
             field: "price",
             render: (item) => {
-              return <span>{item} $</span>;
+              return <span>NPR {item}</span>;
             },
           },
           {
@@ -69,7 +80,7 @@ const Product = () => {
             render: (item, obj) => {
               return (
                 <div className="btn-container">
-                  <Link href={`/dashboard/products/${obj?.id}`}>
+                  <Link href={`/dashboard/products/${obj?._id}`}>
                     <button className="view">{obj?.actions[0]}</button>
                   </Link>
                   <button className="delete">{obj?.actions[1]}</button>
