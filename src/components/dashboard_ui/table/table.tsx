@@ -1,5 +1,5 @@
 "use client"
-import React,{useEffect, useState} from "react";
+import React,{useState} from "react";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
 import AnimatedTd from "./animated_td";
@@ -8,14 +8,18 @@ const Table = <T, K extends Extract<keyof T, string>>({
   data,
   columns,
 }: Com.TableProps<T, K>) => {
+
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [itemsPerPage, setItemsPerPage] = useState(1);
   // const [currentPageData, setCurrentPageData] = useState(data);
-  const [currentPage, setCurrentPage] = useState(1);
   // const newData = [...data, ...data, ...data, ...data]
 
-  const handlePageChange = (newPage:number, firstIndex:number, lastIndex: number)=>{
-    // setCurrentPageData(newData.slice(firstIndex-1, lastIndex));
-    setCurrentPage(newPage);
-  }
+  // const handlePageChange = (newPage:number, itemsPerPage?:number, firstIndex?:number, lastIndex?: number)=>{
+  //   // setCurrentPageData(newData.slice(firstIndex-1, lastIndex));
+  //   setCurrentPage(newPage);
+  //   itemsPerPage && setCurrentPage(1);
+  //   itemsPerPage && setItemsPerPage(itemsPerPage);
+  // }
 
   return (
     <div className="table-container">
@@ -41,9 +45,11 @@ const Table = <T, K extends Extract<keyof T, string>>({
       </table>
       <div className="pagination">
       <Pagination
-      currentPage={currentPage}
-      totalItem={data.length}
-      onPageChange={handlePageChange}/>
+      // currentPage={currentPage}
+      totalItem={6}
+      // itemsPerPage={itemsPerPage}
+      // onPageChange={handlePageChange}
+      />
       </div>
     </div>
   );

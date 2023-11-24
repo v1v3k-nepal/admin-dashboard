@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Table from "../table/table";
 import Image from "next/image";
 import "./_users.scss";
@@ -11,10 +11,6 @@ const UsersUI = ({data}:{data:Com.TuserData}) => {
 
   const newusersData = data;
   console.log("i am userspage", data)
-
-  useEffect(()=>{
-    console.log("useEffect triggered")
-  },[data])
 
   return (
     <div className="user-container">
