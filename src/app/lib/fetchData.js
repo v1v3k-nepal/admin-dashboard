@@ -30,3 +30,13 @@ export const fectchProducts = async(q,itemsPerPage, page)=>{
     console.log("i am fetchProducts : error", e)
   }
 }
+
+export const fetchSingleProduct = async(id)=>{
+  connectToDB();
+  try{
+    const product = await Product.findById(id);
+    return product;
+  }catch(e){
+    console.log("i am fetch single product : error", e)
+  }
+}
