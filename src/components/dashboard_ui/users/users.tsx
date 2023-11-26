@@ -6,10 +6,9 @@ import "./_users.scss";
 import Link from "next/link";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
 
-const UsersUI = ({ data }: { data?: Com.TuserData }) => {
+const UsersUI = ({ usersData, userCount }: { usersData?: Com.TuserData , userCount: number }) => {
   // const theadData:string[] = ["Name", "Email", "Created At", "Role", "Status", "Action"]
 
-  // console.log("i am userspage", data);
 
   return (
     <div className="user-container">
@@ -18,7 +17,8 @@ const UsersUI = ({ data }: { data?: Com.TuserData }) => {
         placeholder="Search for a User"
       />
       <Table
-        data={!!data ? data : []}
+        data={!!usersData ? usersData : []}
+        itemCount={userCount}
         columns={[
           {
             thead: "Name",

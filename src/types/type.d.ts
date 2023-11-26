@@ -83,6 +83,7 @@ declare namespace Com {
   type TableProps<T, K extends Extract<keyof T, string>> = {
     data: T[];
     columns: TableColumns<T, K>[];
+    itemCount: number;
   };
 
   type TsearchParams = {

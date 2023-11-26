@@ -1,5 +1,5 @@
 "use client"
-import React,{useState} from "react";
+import React from "react";
 import Pagination from "../pagination/pagination";
 import "./_table.scss";
 import AnimatedTd from "./animated_td";
@@ -7,19 +7,8 @@ import AnimatedTd from "./animated_td";
 const Table = <T, K extends Extract<keyof T, string>>({
   data,
   columns,
+  itemCount,
 }: Com.TableProps<T, K>) => {
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [itemsPerPage, setItemsPerPage] = useState(1);
-  // const [currentPageData, setCurrentPageData] = useState(data);
-  // const newData = [...data, ...data, ...data, ...data]
-
-  // const handlePageChange = (newPage:number, itemsPerPage?:number, firstIndex?:number, lastIndex?: number)=>{
-  //   // setCurrentPageData(newData.slice(firstIndex-1, lastIndex));
-  //   setCurrentPage(newPage);
-  //   itemsPerPage && setCurrentPage(1);
-  //   itemsPerPage && setItemsPerPage(itemsPerPage);
-  // }
 
   return (
     <div className="table-container">
@@ -44,42 +33,10 @@ const Table = <T, K extends Extract<keyof T, string>>({
         </tbody>
       </table>
       <div className="pagination">
-      <Pagination
-      // currentPage={currentPage}
-      totalItem={6}
-      // itemsPerPage={itemsPerPage}
-      // onPageChange={handlePageChange}
-      />
+      <Pagination totalItem={itemCount}/>
       </div>
     </div>
   );
 };
 
 export default Table;
-
-{
-  /* <td>
-                <div className="details">
-                  <Image
-                    src={item?.userImg || item?.productImg}
-                    alt="image icon"
-                    height={40}
-                    width={40}
-                    className="img"
-                  ></Image>
-                  <span>{item.userName || item.product}</span>
-                </div>
-              </td>
-              <td>{item?.email || item?.desc}</td>
-              <td>{item?.createdAt}</td>
-              <td>{item?.role || item?.price}</td>
-              <td>{item?.status || item?.stock}</td>
-              <td>
-                <div className="btn-container">
-                  <Link href={`/dashboard/users/${item.id}`}>
-                    <button className="view">View</button>
-                  </Link>
-                  <button className="delete">Delete</button>
-                </div>
-              </td> */
-}

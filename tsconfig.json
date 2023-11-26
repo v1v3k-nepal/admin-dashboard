@@ -23,6 +23,6 @@
     },
     // "typeRoots": ["src/types/type.d.ts"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/lib/utils.js", "src/app/lib/models.js", "src/components/dashboard_ui/users/users.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/lib/utils.js", "src/app/lib/models.js", "src/components/dashboard_ui/users/users.tsx", "src/app/lib/fetchData.js"],
   "exclude": ["node_modules"]
 }

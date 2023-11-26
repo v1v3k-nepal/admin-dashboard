@@ -6,10 +6,12 @@ const Products = async ({searchParams}: Com.TsearchParams) => {
   const q = searchParams?.q || "";
   const itemsPerPage = searchParams?.itemsPerPage || 1;
   const currentPage = searchParams?.page || 1;
-  const productData:Com.TproductData | undefined = await fectchProducts(q, itemsPerPage, currentPage);
+  const data = await fectchProducts(q, itemsPerPage, currentPage);
+  const products:Com.TproductData | undefined = data?.products;
+  const productCount: number = data?.productCount;
   return (
     <div>
-      <Product data={productData} />
+      <Product productData={products} productCount={productCount}/>
     </div>
   );
 };

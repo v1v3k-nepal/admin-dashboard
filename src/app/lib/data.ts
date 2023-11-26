@@ -4,19 +4,19 @@ export const cardsData: Com.TCardData[] = [
   {
     id: 1,
     title: "Total Users",
-    userTotal: 10.928,
+    userTotal: 10_928,
     change: 12,
   },
   {
     id: 2,
     title: "Total Users",
-    userTotal: 12.435,
+    userTotal: 12_435,
     change: 5,
   },
   {
     id: 3,
     title: "Total Users",
-    userTotal: 9.305,
+    userTotal: 9_305,
     change: -10,
   },
 ];

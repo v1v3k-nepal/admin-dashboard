@@ -7,11 +7,14 @@ const Users = async ({ searchParams }: Com.TsearchParams) => {
   const itemsPerPage = searchParams?.itemsPerPage || 1;
   const currentPage = searchParams?.page || 1;
 
-  const data: Com.TuserData | undefined = await fetchUsers(q, itemsPerPage, currentPage);
+
+  const data = await fetchUsers(q, itemsPerPage, currentPage);
+  const users: Com.TuserData | undefined = data?.users;
+  const userCount: number = data?.userCount;
 
   return (
     <div>
-      <UsersUI data={data} />
+      <UsersUI usersData={users} userCount={userCount}/>
     </div>
   );
 };

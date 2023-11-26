@@ -27,10 +27,11 @@
 
     .dp-container {
       position: relative;
-      height: 180px;
+      height: 200px;
       width: 200px;
       .dp {
-        object-fit: contain;
+        object-fit: cover;
+        border-radius: 10px;
       }
     }
   }
