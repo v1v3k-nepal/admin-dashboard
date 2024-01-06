@@ -18,19 +18,6 @@
       flex-direction: column;
       gap: 20px;
       width: 100%;
-
-      input, select {
-        background-color: transparent;
-        padding: 15px 20px;
-        color: var(--text);
-        border-radius: 5px;
-        border: white 2px solid;
-        outline: none;
-        // width: 80%;
-        option{
-          color: #000;
-        }
-      }
     }
 
     .col-right {
@@ -58,5 +45,21 @@
     font-size: 1rem;
     cursor: pointer;
 
+  }
+
+  input, select{
+    background-color: transparent;
+    padding: 15px 20px;
+    color: var(--text);
+    border-radius: 5px;
+    border: white 2px solid;
+    outline: none;
+    width: 100%;
+    option{
+      color: #000;
+    }
+    &.userImg{
+      margin-top: 20px;
+    }
   }
 }

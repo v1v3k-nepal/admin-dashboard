@@ -5,8 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import "../users/_users.scss";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
+import { deleteProduct } from "@/app/lib/actions";
 
-const Product = ({ productData, productCount }: { productData?: Com.TproductData, productCount: number }) => {
+const Product = ({
+  productData,
+  productCount,
+}: {
+  productData?: Com.TproductData[];
+  productCount: number;
+}) => {
   // const theadData = ["Product", "Description", "Created At", "Price", "Stock", "Action"]
 
   return (
@@ -43,7 +50,7 @@ const Product = ({ productData, productCount }: { productData?: Com.TproductData
             thead: "Description",
             field: "desc",
             render: (item) => {
-              return <span>{item}</span>;
+              return <span className="description">{item}</span>;
             },
           },
           // {
@@ -83,7 +90,12 @@ const Product = ({ productData, productCount }: { productData?: Com.TproductData
                   <Link href={`/dashboard/products/${obj?._id}`}>
                     <button className="view">{obj?.actions[0]}</button>
                   </Link>
-                  <button className="delete">{obj?.actions[1]}</button>
+                  <button
+                    className="delete"
+                    onClick={() => deleteProduct(obj?._id)}
+                  >
+                    {obj?.actions[1]}
+                  </button>
                 </div>
               );
             },

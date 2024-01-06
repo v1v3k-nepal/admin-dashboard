@@ -61,18 +61,37 @@ declare namespace Com {
     actions: Array<string>;
   }[];
 
-  type TproductData = Array<{
+  type Tcategories = Array<{
+    id: string;
+    value: string;
+    label?: string;
+    isChecked: boolean;
+  }>;
+
+  type TproductFormData = {
+    productName: string;
+    price: string;
+    color: string;
+    productImg: string;
+    stock: string;
+    size: string;
+    category: Tcategories;
+    desc: string;
+  };
+
+  type TproductData = {
     _id: number;
     productName: string;
     productImg: string;
     desc: string;
     price: number;
+    category: Tcategories;
     createdAt: string;
     stock: number;
     actions: Array<string>;
     color: string;
     size: string;
-  }>;
+  };
 
   type TableColumns<T, K extends Extract<keyof T, string>> = {
     thead: string;

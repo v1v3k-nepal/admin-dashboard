@@ -12,41 +12,83 @@ const SingleUserPage = async ({ params }: { params: { id: string } }) => {
         <div className="dp-container">
           <Image src={userData?.userImg} alt="user dp" fill className="dp" />
         </div>
-        <span className="user-name">Chinnu Swami</span>
+        <span className="user-name">{userData?.username}</span>
       </div>
       <form action="">
         <div className="input">
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" placeholder="Username" value={userData?.username}/>
+          <input
+            type="text"
+            id="username"
+            placeholder="Username"
+            value={userData?.username}
+          />
+        </div>
+        <div className="input">
+          <label htmlFor="userImg">User Image</label>
+          <input
+            type="text"
+            id="userImg"
+            placeholder="User Image"
+            value={userData?.userImg}
+          />
         </div>
         <div className="input">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" placeholder="Email" value={userData?.email}/>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={userData?.email}
+          />
         </div>
         <div className="input">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" placeholder="Password" value={userData?.password}/>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={userData?.password}
+          />
         </div>
         <div className="input">
           <label htmlFor="Phone">Phone</label>
-          <input type="phone" id="phone" placeholder="Phone" value={userData?.phone}/>
+          <input
+            type="phone"
+            id="phone"
+            placeholder="Phone"
+            value={userData?.phone}
+          />
         </div>
         <div className="input">
           <label htmlFor="address">Address</label>
-          <input type="text" id="address" placeholder="Address" value={userData?.address}/>
+          <input
+            type="text"
+            id="address"
+            placeholder="Address"
+            value={userData?.address}
+          />
         </div>
         <div className="input">
           <label htmlFor="isAdmin">Is Admin ?</label>
           <select name="isAdmin" id="isAdmin">
-            <option value="false" selected={userData?.isAdmin}>No</option>
-            <option value="true" selected={userData?.isAdmin}>Yes</option>
+            <option value="false" selected={!userData?.isAdmin}>
+              No
+            </option>
+            <option value="true" selected={userData?.isAdmin}>
+              Yes
+            </option>
           </select>
         </div>
         <div className="input">
           <label htmlFor="isActive">Is Active ?</label>
           <select name="isActive" id="isActive">
-            <option value="true" selected={userData?.isActive}>Yes</option>
-            <option value="false" selected={userData?.isActive}>No</option>
+            <option value="true" selected={userData?.isActive}>
+              Yes
+            </option>
+            <option value="false" selected={!userData?.isActive}>
+              No
+            </option>
           </select>
         </div>
         <button>Update</button>
