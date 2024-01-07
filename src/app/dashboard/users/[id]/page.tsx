@@ -158,7 +158,7 @@ const SingleUserPage = () => {
             </option>
           </select>
         </div>
-        <button>Update</button>
+        <button className="update-btn">Update</button>
       </form>
     </div>
   );

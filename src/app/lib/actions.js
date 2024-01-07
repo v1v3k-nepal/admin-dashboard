@@ -3,9 +3,8 @@ import { revalidatePath } from "next/cache";
 import { Product, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
-import { NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 export const addUser = async (formData) => {
-  console.log(formData);
   const {
     username,
     email,
@@ -36,7 +35,6 @@ export const addUser = async (formData) => {
   try {
     connectToDB();
     await newUser.save();
-
     return true;
   } catch (e) {
     console.log(e.message);
@@ -75,8 +73,10 @@ export const addProductToDB = async (formData) => {
   try {
     connectToDB();
     await newProduct.save();
+    return true;
   } catch (e) {
     console.log(e.message);
+    return false;
     // throw new Error("cannot create new Product", e.message);
   }
 };
