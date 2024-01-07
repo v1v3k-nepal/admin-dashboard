@@ -36,9 +36,11 @@ export const addUser = async (formData) => {
   try {
     connectToDB();
     await newUser.save();
+    return true;
   } catch (e) {
     console.log(e.message);
-    throw new Error("cannot create new user", e.message);
+    // throw new Error("cannot create new user", e.message);
+    return false;
   }
 };
 
@@ -61,9 +63,11 @@ export const addProductToDB = async (formData) => {
   try {
     connectToDB();
     await newProduct.save();
+    return true;
   } catch (e) {
     console.log(e.message);
-    throw new Error("cannot create new Product", e.message);
+    // throw new Error("cannot create new Product", e.message);
+    return false;
   }
 };
 
@@ -72,9 +76,11 @@ export const deleteProduct = async (id) => {
     connectToDB();
     await Product.findByIdAndDelete(id);
     revalidatePath("/dashboard/products");
+    return true;
   } catch (e) {
     console.log(e.message);
-    throw new Error("cannot delete product ", e.message);
+    // throw new Error("cannot delete product ", e.message);
+    return false;
   }
 };
 
@@ -83,17 +89,21 @@ export const deleteUser = async (id) => {
     connectToDB();
     await User.findByIdAndDelete(id);
     revalidatePath("dashboard/users");
+    return true;
   } catch (e) {
     console.log(e.message);
-    throw new Error("cannot delete user", e.message);
+    // throw new Error("cannot delete user", e.message);
+    return false;
   }
 };
 
 export const updateProduct = async (id, data) => {
   try {
     connectToDB();
-    await Product.findByIdAndUpdate(id, data);
+    const response = await Product.findByIdAndUpdate(id, data);
+    return true;
   } catch (e) {
     console.log(e.message, "could not update product data");
+    return false;
   }
 };

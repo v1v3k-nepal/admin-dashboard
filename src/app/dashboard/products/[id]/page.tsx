@@ -1,43 +1,7 @@
-// "use server";
-// import React from "react";
-// import SingleProductPage from "./components/singleProductPage/singleProductPage";
-// import { fetchSingleProduct } from "@/app/lib/fetchData";
-// import { updateProduct } from "@/app/lib/actions";
-
-// const SingleProductMainPage = () => {
-//   const fetchProductDataFunc = async (pathname: string) => {
-//     const id = pathname.split("/").at(3);
-//     const productData: Promise<Com.TproductFormData> = await fetchSingleProduct(
-//       id
-//     );
-//     return productData;
-//   };
-
-//   const updateProductFunc = async (
-//     pathname: string,
-//     data: Com.TproductFormData
-//   ) => {
-//     const id = pathname.split("/").at(3);
-//     updateProduct(id, data);
-//   };
-
-//   return (
-//     <div>
-//       <SingleProductPage
-//         fetchProductDataFunc={fetchProductDataFunc}
-//         updateProductFunc={updateProductFunc}
-//       />
-//     </div>
-//   );
-// };
-
-// export default SingleProductMainPage;
-
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "./_singleProductPage.scss";
-// import { fetchSingleProduct } from "@/app/lib/fetchData";
 import {
   SelectCategory,
   productCategoriesData,

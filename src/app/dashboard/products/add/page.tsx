@@ -1,24 +1,5 @@
-// "use server";
-// import React from "react";
-// import AddProduct from "./components/addProduct/addProduct";
-// import { addProductToDB } from "@/app/lib/actions";
-
-// const AddProductMainComp = () => {
-//   const addProductFunc = async (formData: Com.TproductFormData) => {
-//     "use server";
-//     addProductToDB(formData);
-//   };
-//   return (
-//     <div>
-//       <AddProduct addProductFunc={addProductFunc} />
-//     </div>
-//   );
-// };
-
-// export default AddProductMainComp;
 "use client";
 import React, { useState } from "react";
-// import { addProductToDB } from "@/app/lib/actions";
 import "./_addProduct.scss";
 import { productCategoriesData } from "@/components/dashboard_ui";
 import { SelectCategory } from "@/components/dashboard_ui";
