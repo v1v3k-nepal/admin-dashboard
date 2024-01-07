@@ -1,14 +1,35 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../table/table";
 import Image from "next/image";
 import "./_users.scss";
 import Link from "next/link";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
+import ConfirmDeleteModal from "../confirmDeleteModal/confirmDeleteModal";
+import { ToastContainer, toast } from "react-toastify";
 
-const UsersUI = ({ usersData, userCount }: { usersData?: Com.TuserData[] , userCount: number }) => {
+const UsersUI = ({
+  usersData,
+  userCount,
+}: {
+  usersData?: Com.TuserData[];
+  userCount: number;
+}) => {
   // const theadData:string[] = ["Name", "Email", "Created At", "Role", "Status", "Action"]
+  const [deleteModalVisibility, setDeleteModalVisibility] =
+    useState<string>("none");
+  const [userIdToDelete, setUserIdToDelete] = useState<number>();
+  const [deleteStatus, setDeleteStatus] = useState<Boolean>();
+  const handleDelete = (id: number) => {
+    setDeleteModalVisibility("block");
+    setUserIdToDelete(id);
+  };
 
+  useEffect(() => {
+    deleteStatus
+      ? toast.success("Deleted Data Successfully")
+      : toast.error("Could not Delete Data");
+  }, [deleteStatus]);
 
   return (
     <div className="user-container">
@@ -77,13 +98,28 @@ const UsersUI = ({ usersData, userCount }: { usersData?: Com.TuserData[] , userC
                   <Link href={`/dashboard/users/${obj?._id}`}>
                     <button className="view">{obj?.actions[0]}</button>
                   </Link>
-                  <button className="delete">{obj?.actions[1]}</button>
+                  <button
+                    className="delete"
+                    onClick={() => handleDelete(obj?._id as number)}
+                  >
+                    {obj?.actions[1]}
+                  </button>
                 </div>
               );
             },
           },
         ]}
       />
+      <div style={{ display: `${deleteModalVisibility}` }}>
+        <ConfirmDeleteModal
+          setDeleteModalVisibility={setDeleteModalVisibility}
+          id={userIdToDelete as number}
+          setDeleteStatus={
+            setDeleteStatus as React.Dispatch<React.SetStateAction<Boolean>>
+          }
+        />
+        <ToastContainer />
+      </div>
     </div>
   );
 };

@@ -98,7 +98,9 @@ export const deleteUser = async (id) => {
   try {
     connectToDB();
     await User.findByIdAndDelete(id);
-    revalidatePath("dashboard/users");
+    setTimeout(() => {
+      revalidatePath("dashboard/users");
+    }, 2000);
     return true;
   } catch (e) {
     console.log(e.message);
