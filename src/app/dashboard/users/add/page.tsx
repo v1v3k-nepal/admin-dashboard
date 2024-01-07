@@ -1,10 +1,15 @@
+"use server";
 import React from "react";
 import { addUser } from "../../../lib/actions";
 import "./_addUser.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { addUserFunc } from "../UserDataActions";
 
 const AddUser = () => {
   return (
     <form action={addUser}>
+      <ToastContainer />
       <div className="add-user-container">
         <div className="cols">
           <div className="col-left">

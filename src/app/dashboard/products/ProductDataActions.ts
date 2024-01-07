@@ -13,9 +13,11 @@ export const updateProductFunc = async (
   data: Com.TproductFormData
 ) => {
   const id = pathname.split("/").at(3);
-  updateProduct(id, data);
+  const status = await updateProduct(id, data);
+  return status;
 };
 
 export const addProductFunc = async (formData: Com.TproductFormData) => {
-  addProductToDB(formData);
+  const status = await addProductToDB(formData);
+  return status;
 };

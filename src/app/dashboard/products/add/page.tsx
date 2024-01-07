@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import "./_addProduct.scss";
 import { productCategoriesData } from "@/components/dashboard_ui";
 import { SelectCategory } from "@/components/dashboard_ui";
-
 import { addProductFunc } from "../ProductDataActions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProduct = () => {
   const [categories, setCategories] = useState<Com.Tcategories>(
@@ -33,16 +34,20 @@ const AddProduct = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     console.log(formData, "i am formdata inside handlesubmit");
     // addProductToDB(formData);
-    addProductFunc(formData);
+    const status = await addProductFunc(formData);
+    status
+      ? toast.success("Product Added to Database Successfully")
+      : toast.error("Could not Add Product");
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <ToastContainer />
       <div className="add-product-container">
         <div className="cols">
           <div className="col-left">

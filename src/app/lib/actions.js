@@ -2,10 +2,10 @@
 import { revalidatePath } from "next/cache";
 import { Product, User } from "./models";
 import { connectToDB } from "./utils";
-import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
-
+import { NextResponse } from "next/server";
 export const addUser = async (formData) => {
+  console.log(formData);
   const {
     username,
     email,
@@ -36,10 +36,22 @@ export const addUser = async (formData) => {
   try {
     connectToDB();
     await newUser.save();
+
     return true;
   } catch (e) {
     console.log(e.message);
     // throw new Error("cannot create new user", e.message);
+    return false;
+  }
+};
+
+export const updateUser = async (id, data) => {
+  try {
+    connectToDB();
+    await User.findByIdAndUpdate(id, data);
+    return true;
+  } catch (e) {
+    console.log(e.message, "could not update user data");
     return false;
   }
 };
@@ -63,11 +75,9 @@ export const addProductToDB = async (formData) => {
   try {
     connectToDB();
     await newProduct.save();
-    return true;
   } catch (e) {
     console.log(e.message);
     // throw new Error("cannot create new Product", e.message);
-    return false;
   }
 };
 
@@ -100,7 +110,7 @@ export const deleteUser = async (id) => {
 export const updateProduct = async (id, data) => {
   try {
     connectToDB();
-    const response = await Product.findByIdAndUpdate(id, data);
+    await Product.findByIdAndUpdate(id, data);
     return true;
   } catch (e) {
     console.log(e.message, "could not update product data");

@@ -6,7 +6,7 @@ import "./_users.scss";
 import Link from "next/link";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
 
-const UsersUI = ({ usersData, userCount }: { usersData?: Com.TuserData , userCount: number }) => {
+const UsersUI = ({ usersData, userCount }: { usersData?: Com.TuserData[] , userCount: number }) => {
   // const theadData:string[] = ["Name", "Email", "Created At", "Role", "Status", "Action"]
 
 

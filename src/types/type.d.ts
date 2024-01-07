@@ -59,7 +59,18 @@ declare namespace Com {
     isAdmin: boolean;
     isActive: boolean;
     actions: Array<string>;
-  }[];
+  };
+
+  type TuserFormData = {
+    username: string;
+    email: string;
+    password: string;
+    phone: string;
+    isAdmin: Boolean;
+    isActive: Boolean;
+    address: string;
+    userImg: string;
+  };
 
   type Tcategories = Array<{
     id: string;

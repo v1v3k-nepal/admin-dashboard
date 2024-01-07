@@ -9,7 +9,7 @@ const Users = async ({ searchParams }: Com.TsearchParams) => {
 
 
   const data = await fetchUsers(q, itemsPerPage, currentPage);
-  const users: Com.TuserData | undefined = data?.users;
+  const users: Com.TuserData[] | undefined = data?.users;
   const userCount: number = data?.userCount;
 
   return (

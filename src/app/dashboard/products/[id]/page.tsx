@@ -8,6 +8,8 @@ import {
 } from "@/components/dashboard_ui";
 import { usePathname } from "next/navigation";
 import { fetchProductDataFunc, updateProductFunc } from "../ProductDataActions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleProductPage = () => {
   const pathname = usePathname();
@@ -43,14 +45,19 @@ const SingleProductPage = () => {
     formData && setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData, "i am formdata inside handlesubmit");
-    formData && updateProductFunc(pathname, formData);
+    const status = formData && (await updateProductFunc(pathname, formData));
+    console.log(status, "product update status");
+    status
+      ? toast.success("Product Data Updated Successfully")
+      : toast.error("Could Not Update Product Data");
   };
 
   return (
     <div className="single-product-page">
+      <ToastContainer />
       <div className="product-name-container">
         <div className="product-container">
           {formData?.productImg && (
@@ -84,6 +91,7 @@ const SingleProductPage = () => {
             placeholder="Product Image URL"
             value={formData?.productImg}
             onChange={handleChange}
+            required={true}
           />
         </div>
         <div className="input-container">
@@ -95,6 +103,7 @@ const SingleProductPage = () => {
             placeholder="Price"
             value={formData?.price}
             onChange={handleChange}
+            required={true}
           />
         </div>
         <div className="input-container">
@@ -106,6 +115,7 @@ const SingleProductPage = () => {
             placeholder="Color"
             value={formData?.color}
             onChange={handleChange}
+            required={true}
           />
         </div>
         <div className="input-container">
@@ -117,6 +127,7 @@ const SingleProductPage = () => {
             placeholder="Stock"
             value={formData?.stock}
             onChange={handleChange}
+            required={true}
           />
         </div>
         <div className="input-container">
@@ -128,6 +139,7 @@ const SingleProductPage = () => {
             placeholder="Size"
             value={formData?.size}
             onChange={handleChange}
+            required={true}
           />
         </div>
         <SelectCategory
@@ -151,6 +163,7 @@ const SingleProductPage = () => {
           placeholder="Product Description"
           value={formData?.desc}
           onChange={handleChange}
+          required={true}
         ></textarea>
         <button>Update</button>
       </form>
