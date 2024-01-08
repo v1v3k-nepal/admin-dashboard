@@ -8,7 +8,7 @@ export const addUserFunc = async (formData: Com.TuserFormData) => {
 };
 
 export const fetchSingleUserDataFunc = async (id: string) => {
-  const data: Com.TuserData = await fetchSingleUser(id);
+  const data = (await fetchSingleUser(id)) as Com.TuserData;
   return data;
 };
 
