@@ -47,30 +47,22 @@ declare namespace Com {
     };
   }[];
 
-  type TuserData = {
-    _id: number;
-    username: string;
-    userImg: string;
-    email: string;
-    password: string;
-    phone: number;
-    address: string;
-    createdAt?: string;
-    isAdmin: boolean;
-    isActive: boolean;
-    actions: Array<string>;
-  };
-
   type TuserFormData = {
     username: string;
     email: string;
     password: string;
     phone: string;
-    isAdmin: Boolean;
-    isActive: Boolean;
+    isAdmin: boolean;
+    isActive: boolean;
     address: string;
     userImg: string;
   };
+
+  interface TuserData extends TuserFormData {
+    _id: number;
+    createdAt?: string;
+    actions: Array<string>;
+  }
 
   type Tcategories = Array<{
     id: string;
@@ -90,19 +82,11 @@ declare namespace Com {
     desc: string;
   };
 
-  type TproductData = {
+  interface TproductData extends TproductFormData {
     _id: number;
-    productName: string;
-    productImg: string;
-    desc: string;
-    price: number;
-    category: Tcategories;
     createdAt: string;
-    stock: number;
     actions: Array<string>;
-    color: string;
-    size: string;
-  };
+  }
 
   type TableColumns<T, K extends Extract<keyof T, string>> = {
     thead: string;
@@ -122,5 +106,11 @@ declare namespace Com {
       itemsPerPage: string;
       page: string;
     };
+  };
+
+  type DeleteModalProps = {
+    setDeleteModalVisibility: React.Dispatch<React.SetStateAction<string>>;
+    id: number;
+    deleteWhat: string;
   };
 }

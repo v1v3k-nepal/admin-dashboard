@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Table from "../table/table";
 import Image from "next/image";
 import Link from "next/link";
 import "../users/_users.scss";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
-import { deleteProduct } from "@/app/lib/actions";
+import { ConfirmDeleteModal } from "../confirmDeleteModal/confirmDeleteModal";
 
 const Product = ({
   productData,
@@ -15,6 +15,14 @@ const Product = ({
   productCount: number;
 }) => {
   // const theadData = ["Product", "Description", "Created At", "Price", "Stock", "Action"]
+
+  const [deleteModalVisibility, setDeleteModalVisibility] =
+    useState<string>("none");
+  const [productIdToDelete, setProductIdToDelete] = useState<number>();
+  const handleDelete = (id: number) => {
+    setDeleteModalVisibility("block");
+    setProductIdToDelete(id);
+  };
 
   return (
     <div className="product-container">
@@ -92,7 +100,7 @@ const Product = ({
                   </Link>
                   <button
                     className="delete"
-                    onClick={() => deleteProduct(obj?._id)}
+                    onClick={() => handleDelete(obj?._id as number)}
                   >
                     {obj?.actions[1]}
                   </button>
@@ -102,6 +110,13 @@ const Product = ({
           },
         ]}
       />
+      <div style={{ display: `${deleteModalVisibility}` }}>
+        <ConfirmDeleteModal
+          setDeleteModalVisibility={setDeleteModalVisibility}
+          id={productIdToDelete as number}
+          deleteWhat="product"
+        />
+      </div>
     </div>
   );
 };

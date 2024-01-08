@@ -2,20 +2,31 @@ import React from "react";
 import "./_confirmDeleteModal.scss";
 import { SlClose } from "react-icons/sl";
 import { IoCloseSharp } from "react-icons/io5";
-import { deleteUser } from "@/app/lib/actions";
-// import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { deleteProduct, deleteUser } from "@/app/lib/actions";
+import { toast } from "react-toastify";
 
-type DeleteModalProps = {
-  setDeleteModalVisibility: React.Dispatch<React.SetStateAction<string>>;
-  id: number;
-  setDeleteStatus: React.Dispatch<React.SetStateAction<Boolean>>;
-};
-const ConfirmDeleteModal = ({
+export const ConfirmDeleteModal = ({
   setDeleteModalVisibility,
   id,
-  setDeleteStatus,
-}: DeleteModalProps) => {
+  deleteWhat,
+}: Com.DeleteModalProps) => {
+  const handleNotify = (status: Boolean) => {
+    console.log(status, "i am delete status");
+    status
+      ? toast.success(`Deleted ${deleteWhat} Successfully`)
+      : toast.error(`Could not Delete ${deleteWhat}`);
+  };
+
+  const handleDelete = async () => {
+    if (deleteWhat == "user") {
+      const status = await deleteUser(id);
+      handleNotify(status);
+    } else if (deleteWhat == "product") {
+      const status = await deleteProduct(id);
+      handleNotify(status);
+    }
+    setDeleteModalVisibility("none");
+  };
   return (
     <div className="confirm-delete-modal">
       <div
@@ -30,7 +41,7 @@ const ConfirmDeleteModal = ({
         </div>
         <h2 className="title">Are You Sure ?</h2>
         <p className="desc">
-          Do you really want to delete this record? This process cannot be
+          Do you really want to delete this {deleteWhat}? This process cannot be
           undone later.
         </p>
         <div className="btn-container">
@@ -42,14 +53,7 @@ const ConfirmDeleteModal = ({
           >
             Cancel
           </button>
-          <button
-            className="delete-btn-modal"
-            onClick={async () => {
-              const status = await deleteUser(id);
-              status ? setDeleteStatus(true) : setDeleteStatus(false);
-              setDeleteModalVisibility("none");
-            }}
-          >
+          <button className="delete-btn-modal" onClick={handleDelete}>
             Delete
           </button>
         </div>
@@ -57,5 +61,3 @@ const ConfirmDeleteModal = ({
     </div>
   );
 };
-
-export default ConfirmDeleteModal;

@@ -5,8 +5,7 @@ import Image from "next/image";
 import "./_users.scss";
 import Link from "next/link";
 import { TableTopPart } from "../tableTopPart/tableTopPart";
-import ConfirmDeleteModal from "../confirmDeleteModal/confirmDeleteModal";
-import { ToastContainer, toast } from "react-toastify";
+import { ConfirmDeleteModal } from "../confirmDeleteModal/confirmDeleteModal";
 
 const UsersUI = ({
   usersData,
@@ -19,17 +18,10 @@ const UsersUI = ({
   const [deleteModalVisibility, setDeleteModalVisibility] =
     useState<string>("none");
   const [userIdToDelete, setUserIdToDelete] = useState<number>();
-  const [deleteStatus, setDeleteStatus] = useState<Boolean>();
   const handleDelete = (id: number) => {
     setDeleteModalVisibility("block");
     setUserIdToDelete(id);
   };
-
-  useEffect(() => {
-    deleteStatus
-      ? toast.success("Deleted Data Successfully")
-      : toast.error("Could not Delete Data");
-  }, [deleteStatus]);
 
   return (
     <div className="user-container">
@@ -114,11 +106,8 @@ const UsersUI = ({
         <ConfirmDeleteModal
           setDeleteModalVisibility={setDeleteModalVisibility}
           id={userIdToDelete as number}
-          setDeleteStatus={
-            setDeleteStatus as React.Dispatch<React.SetStateAction<Boolean>>
-          }
+          deleteWhat="user"
         />
-        <ToastContainer />
       </div>
     </div>
   );
