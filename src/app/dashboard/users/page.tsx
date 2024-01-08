@@ -8,8 +8,8 @@ const Users = async ({ searchParams }: Com.TsearchParams) => {
   const currentPage = Number(searchParams?.page || 1);
 
   const data = await fetchUsers(q, itemsPerPage, currentPage);
-  const users: Com.TuserData[] | undefined = data?.users;
-  const userCount: number = data?.userCount;
+  const users = data?.users as Com.TuserData[];
+  const userCount = data?.userCount as number;
 
   return (
     <div>
