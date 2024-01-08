@@ -19,7 +19,7 @@ const SingleProductPage = () => {
     (async () => {
       const data = await fetchProductDataFunc(pathname);
       // setformData(data);
-      setCategories(data.category);
+      setCategories(data?.category);
       console.log(data);
 
       const initialFormData: Com.TproductFormData = {

@@ -15,8 +15,8 @@ interface UserDocument extends Document {
 interface ProductDocument extends Document {
   productName: string;
   desc: string;
-  price: number;
-  stock: number;
+  price: string | number;
+  stock: string | number;
   productImg: string;
   color?: string;
   size?: string;

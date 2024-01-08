@@ -73,10 +73,10 @@ declare namespace Com {
 
   type TproductFormData = {
     productName: string;
-    price: string;
+    price: string | number;
     color: string;
     productImg: string;
-    stock: string;
+    stock: string | number;
     size: string;
     category: Tcategories;
     desc: string;
