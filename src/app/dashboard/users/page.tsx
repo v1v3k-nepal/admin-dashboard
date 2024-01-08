@@ -4,9 +4,8 @@ import { fetchUsers } from "@/app/lib/fetchData";
 
 const Users = async ({ searchParams }: Com.TsearchParams) => {
   const q = searchParams?.q || "";
-  const itemsPerPage = searchParams?.itemsPerPage || 1;
-  const currentPage = searchParams?.page || 1;
-
+  const itemsPerPage = Number(searchParams?.itemsPerPage || 1);
+  const currentPage = Number(searchParams?.page || 1);
 
   const data = await fetchUsers(q, itemsPerPage, currentPage);
   const users: Com.TuserData[] | undefined = data?.users;
@@ -14,7 +13,7 @@ const Users = async ({ searchParams }: Com.TsearchParams) => {
 
   return (
     <div>
-      <UsersUI usersData={users} userCount={userCount}/>
+      <UsersUI usersData={users} userCount={userCount} />
     </div>
   );
 };

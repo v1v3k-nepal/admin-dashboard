@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { Product, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
-export const addUser = async (formData) => {
+export const addUser = async (formData: Com.TuserFormData) => {
   const {
     username,
     email,
@@ -26,8 +26,8 @@ export const addUser = async (formData) => {
     email,
     password: hashedPassword,
     phone,
-    isAdmin: isAdmin === "true" ? true : false,
-    isActive: isActive === "true" ? true : false,
+    isAdmin: isAdmin,
+    isActive: isActive,
     address,
     actions: ["View", "Delete"],
   });
@@ -37,26 +37,26 @@ export const addUser = async (formData) => {
     await newUser.save();
     revalidatePath("/dashboard/users");
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message);
     // throw new Error("cannot create new user", e.message);
     return false;
   }
 };
 
-export const updateUser = async (id, data) => {
+export const updateUser = async (id: string, data: Com.TuserFormData) => {
   try {
     connectToDB();
     await User.findByIdAndUpdate(id, data);
     revalidatePath("/dashboard/users");
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message, "could not update user data");
     return false;
   }
 };
 
-export const addProductToDB = async (formData) => {
+export const addProductToDB = async (formData: Com.TproductFormData) => {
   const { productName, price, color, productImg, stock, size, category, desc } =
     formData;
 
@@ -77,46 +77,46 @@ export const addProductToDB = async (formData) => {
     await newProduct.save();
     revalidatePath("/dashboard/products");
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message);
     return false;
     // throw new Error("cannot create new Product", e.message);
   }
 };
 
-export const deleteProduct = async (id) => {
+export const deleteProduct = async (id: number) => {
   try {
     connectToDB();
     await Product.findByIdAndDelete(id);
     revalidatePath("/dashboard/products");
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message);
     // throw new Error("cannot delete product ", e.message);
     return false;
   }
 };
 
-export const deleteUser = async (id) => {
+export const deleteUser = async (id: number) => {
   try {
     connectToDB();
     await User.findByIdAndDelete(id);
     revalidatePath("dashboard/users");
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message);
     // throw new Error("cannot delete user", e.message);
     return false;
   }
 };
 
-export const updateProduct = async (id, data) => {
+export const updateProduct = async (id: string, data: Com.TproductFormData) => {
   try {
     connectToDB();
     await Product.findByIdAndUpdate(id, data);
     revalidatePath("/dashboard/products");
     return true;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message, "could not update product data");
     return false;
   }

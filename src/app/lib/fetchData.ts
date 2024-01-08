@@ -1,7 +1,11 @@
-import { Product, User } from "./models.js";
-import { connectToDB } from "./utils.js";
+import { Product, User } from "./models";
+import { connectToDB } from "./utils";
 
-export const fetchUsers = async (q, itemsPerPage, page) => {
+export const fetchUsers = async (
+  q: string,
+  itemsPerPage: number,
+  page: number
+) => {
   connectToDB();
   console.log("i am fetchusers", q);
   const regex = new RegExp(q, "i");
@@ -10,7 +14,9 @@ export const fetchUsers = async (q, itemsPerPage, page) => {
       .limit(itemsPerPage)
       .skip(itemsPerPage * (page - 1));
 
-    const userCount = await User.find({ username: { $regex: regex } }).count();
+    const userCount = await User.find({
+      username: { $regex: regex },
+    }).countDocuments();
 
     // console.log("i am fetchusers : success",users)
     return { users, userCount };
@@ -19,7 +25,11 @@ export const fetchUsers = async (q, itemsPerPage, page) => {
   }
 };
 
-export const fectchProducts = async (q, itemsPerPage, page) => {
+export const fectchProducts = async (
+  q: string,
+  itemsPerPage: number,
+  page: number
+) => {
   connectToDB();
   const regex = new RegExp(q, "i");
   try {
@@ -29,7 +39,7 @@ export const fectchProducts = async (q, itemsPerPage, page) => {
 
     const productCount = await Product.find({
       productName: { $regex: regex },
-    }).count();
+    }).countDocuments();
 
     return { products, productCount };
   } catch (e) {
@@ -37,7 +47,7 @@ export const fectchProducts = async (q, itemsPerPage, page) => {
   }
 };
 
-export const fetchSingleProduct = async (id) => {
+export const fetchSingleProduct = async (id: string) => {
   connectToDB();
   try {
     const product = await Product.findById(id);
@@ -47,7 +57,7 @@ export const fetchSingleProduct = async (id) => {
   }
 };
 
-export const fetchSingleUser = async (id) => {
+export const fetchSingleUser = async (id: string) => {
   connectToDB();
   try {
     const user = await User.findById(id);
