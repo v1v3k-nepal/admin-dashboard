@@ -8,8 +8,7 @@ import {
 } from "@/components/dashboard_ui";
 import { usePathname } from "next/navigation";
 import { fetchProductDataFunc, updateProductFunc } from "../ProductDataActions";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const SingleProductPage = () => {
   const pathname = usePathname();
@@ -48,16 +47,17 @@ const SingleProductPage = () => {
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData, "i am formdata inside handlesubmit");
-    const status = formData && (await updateProductFunc(pathname, formData));
+    const status = await updateProductFunc(pathname, formData);
     console.log(status, "product update status");
-    status
-      ? toast.success("Product Data Updated Successfully")
-      : toast.error("Could Not Update Product Data");
+    setTimeout(() => {
+      status
+        ? toast.success("Product Data Updated Successfully")
+        : toast.error("Could Not Update Product Data");
+    }, 500);
   };
 
   return (
     <div className="single-product-page">
-      <ToastContainer />
       <div className="product-name-container">
         <div className="product-container">
           {formData?.productImg && (
@@ -81,6 +81,7 @@ const SingleProductPage = () => {
             placeholder="Product Name"
             value={formData?.productName}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="input-container">

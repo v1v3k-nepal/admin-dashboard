@@ -3,7 +3,6 @@ import { revalidatePath } from "next/cache";
 import { Product, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
-import { redirect } from "next/navigation";
 export const addUser = async (formData) => {
   const {
     username,
@@ -14,7 +13,8 @@ export const addUser = async (formData) => {
     isActive,
     address,
     userImg,
-  } = Object.fromEntries(formData);
+  } = formData;
+  // } = Object.fromEntries(formData);
   // console.log({username, email, password, phone, isAdmin, isActive, address, userImg})
 
   const salt = await bcrypt.genSalt(10);
@@ -35,6 +35,7 @@ export const addUser = async (formData) => {
   try {
     connectToDB();
     await newUser.save();
+    revalidatePath("/dashboard/users");
     return true;
   } catch (e) {
     console.log(e.message);
@@ -47,6 +48,7 @@ export const updateUser = async (id, data) => {
   try {
     connectToDB();
     await User.findByIdAndUpdate(id, data);
+    revalidatePath("/dashboard/users");
     return true;
   } catch (e) {
     console.log(e.message, "could not update user data");
@@ -73,6 +75,7 @@ export const addProductToDB = async (formData) => {
   try {
     connectToDB();
     await newProduct.save();
+    revalidatePath("/dashboard/products");
     return true;
   } catch (e) {
     console.log(e.message);
@@ -111,6 +114,7 @@ export const updateProduct = async (id, data) => {
   try {
     connectToDB();
     await Product.findByIdAndUpdate(id, data);
+    revalidatePath("/dashboard/products");
     return true;
   } catch (e) {
     console.log(e.message, "could not update product data");

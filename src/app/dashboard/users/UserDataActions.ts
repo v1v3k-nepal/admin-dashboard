@@ -2,8 +2,8 @@
 import { addUser, updateUser } from "@/app/lib/actions";
 import { fetchSingleUser } from "@/app/lib/fetchData";
 
-export const addUserFunc = async (e: React.FormEvent<HTMLFormElement>) => {
-  const status = await addUser(e);
+export const addUserFunc = async (formData: Com.TuserFormData) => {
+  const status = await addUser(formData);
   return status;
 };
 

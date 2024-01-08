@@ -4,8 +4,7 @@ import "./_addProduct.scss";
 import { productCategoriesData } from "@/components/dashboard_ui";
 import { SelectCategory } from "@/components/dashboard_ui";
 import { addProductFunc } from "../ProductDataActions";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const [categories, setCategories] = useState<Com.Tcategories>(
@@ -40,14 +39,15 @@ const AddProduct = () => {
     console.log(formData, "i am formdata inside handlesubmit");
     // addProductToDB(formData);
     const status = await addProductFunc(formData);
-    status
-      ? toast.success("Product Added to Database Successfully")
-      : toast.error("Could not Add Product");
+    setTimeout(() => {
+      status
+        ? toast.success("Product Added to Database Successfully")
+        : toast.error("Could not Add Product");
+    }, 500);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ToastContainer />
       <div className="add-product-container">
         <div className="cols">
           <div className="col-left">
@@ -57,6 +57,7 @@ const AddProduct = () => {
               name="productName"
               value={formData.productName}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
@@ -64,6 +65,7 @@ const AddProduct = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
@@ -71,6 +73,7 @@ const AddProduct = () => {
               name="color"
               value={formData.color}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="col-right">
@@ -80,6 +83,7 @@ const AddProduct = () => {
               name="stock"
               value={formData.stock}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
@@ -87,6 +91,7 @@ const AddProduct = () => {
               name="size"
               value={formData.size}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
@@ -95,6 +100,7 @@ const AddProduct = () => {
               className="productImg"
               value={formData.productImg}
               onChange={handleChange}
+              required
             />
           </div>
         </div>
@@ -111,6 +117,7 @@ const AddProduct = () => {
           cols={30}
           rows={10}
           placeholder="Product Description"
+          required
         ></textarea>
         <button type="submit">Submit</button>
       </div>

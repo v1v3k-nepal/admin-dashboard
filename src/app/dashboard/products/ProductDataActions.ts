@@ -10,7 +10,7 @@ export const fetchProductDataFunc = async (pathname: string) => {
 
 export const updateProductFunc = async (
   pathname: string,
-  data: Com.TproductFormData
+  data?: Com.TproductFormData
 ) => {
   const id = pathname.split("/").at(3);
   const status = await updateProduct(id, data);

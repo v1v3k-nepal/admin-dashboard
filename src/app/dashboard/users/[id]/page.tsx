@@ -4,8 +4,7 @@ import Image from "next/image";
 import "./_singleUserPage.scss";
 import { usePathname } from "next/navigation";
 import { UpdateUserFunc, fetchSingleUserDataFunc } from "../UserDataActions";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const SingleUserPage = () => {
   const pathname = usePathname();
@@ -30,9 +29,11 @@ const SingleUserPage = () => {
   const handleSubmit = async () => {
     const id = pathname.split("/").at(3) as string;
     const status = formData && (await UpdateUserFunc(id, formData));
-    status
-      ? toast.success("User Data Updated Successfully")
-      : toast.error("Could not Update User Data");
+    setTimeout(() => {
+      status
+        ? toast.success("User Data Updated Successfully")
+        : toast.error("Could not Update User Data");
+    }, 500);
   };
 
   useEffect(() => {
@@ -45,8 +46,8 @@ const SingleUserPage = () => {
         email: data?.email ? data?.email : "",
         password: data?.username ? data?.username : "",
         phone: data?.phone ? data?.phone : "",
-        isAdmin: data?.isAdmin ? data?.isAdmin : false,
-        isActive: data?.isActive ? data?.isActive : true,
+        isAdmin: data?.isAdmin,
+        isActive: data?.isActive,
         address: data?.address ? data?.address : "",
         userImg: data?.userImg ? data?.userImg : "",
       };
@@ -70,7 +71,6 @@ const SingleUserPage = () => {
         <span className="user-name">{formData?.username}</span>
       </div>
       <form action={handleSubmit}>
-        <ToastContainer />
         <div className="input">
           <label htmlFor="username">Username</label>
           <input
@@ -79,6 +79,7 @@ const SingleUserPage = () => {
             name="username"
             onChange={handleChange}
             value={formData?.username}
+            required
           />
         </div>
         <div className="input">
@@ -90,6 +91,7 @@ const SingleUserPage = () => {
             name="userImg"
             onChange={handleChange}
             value={formData?.userImg}
+            required
           />
         </div>
         <div className="input">
@@ -101,6 +103,7 @@ const SingleUserPage = () => {
             name="email"
             onChange={handleChange}
             value={formData?.email}
+            required
           />
         </div>
         <div className="input">
@@ -112,6 +115,7 @@ const SingleUserPage = () => {
             name="password"
             onChange={handleChange}
             value={formData?.password}
+            required
           />
         </div>
         <div className="input">
@@ -123,6 +127,7 @@ const SingleUserPage = () => {
             name="phone"
             onChange={handleChange}
             value={formData?.phone}
+            required
           />
         </div>
         <div className="input">
@@ -134,11 +139,18 @@ const SingleUserPage = () => {
             name="address"
             onChange={handleChange}
             value={formData?.address}
+            required
           />
         </div>
         <div className="input">
           <label htmlFor="isAdmin">Is Admin ?</label>
-          <select name="isAdmin" id="isAdmin" onChange={handleSelectChange}>
+          <select
+            name="isAdmin"
+            id="isAdmin"
+            onChange={handleSelectChange}
+            required
+            // defaultValue={formData?.isAdmin ? "true" : "false"}
+          >
             <option value="false" selected={!formData?.isAdmin}>
               No
             </option>
@@ -149,7 +161,13 @@ const SingleUserPage = () => {
         </div>
         <div className="input">
           <label htmlFor="isActive">Is Active ?</label>
-          <select name="isActive" id="isActive" onChange={handleSelectChange}>
+          <select
+            name="isActive"
+            id="isActive"
+            onChange={handleSelectChange}
+            // defaultValue={formData?.isActive ? "true" : "false"}
+            required
+          >
             <option value="true" selected={!!formData?.isActive}>
               Yes
             </option>
