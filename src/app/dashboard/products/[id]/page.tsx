@@ -17,7 +17,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await fetchProductDataFunc(pathname);
+      const data = (await fetchProductDataFunc(pathname)) as Com.TproductData;
       // setformData(data);
       setCategories(data?.category);
       console.log(data);

@@ -109,7 +109,14 @@ const productSchema: Schema<ProductDocument> = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const User =
+// export const User =
+//   (mongoose.models?.User as mongoose.Model<UserDocument>) ||
+//   mongoose.model<UserDocument>("User", userSchema);
+// export const Product =
+//   (mongoose.models?.Product as mongoose.Model<ProductDocument>) ||
+//   mongoose.model<ProductDocument>("Product", productSchema);
+
+  export const User =
   (mongoose.models?.User as mongoose.Model<UserDocument>) ||
   mongoose.model<UserDocument>("User", userSchema);
 export const Product =

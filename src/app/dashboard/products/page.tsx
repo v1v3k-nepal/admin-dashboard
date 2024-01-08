@@ -8,7 +8,7 @@ const Products = async ({ searchParams }: Com.TsearchParams) => {
   const currentPage = Number(searchParams?.page || 1);
   const data = await fectchProducts(q, itemsPerPage, currentPage);
   const products = data?.products as Com.TproductData[];
-  const productCount: number = data?.productCount;
+  const productCount = Number(data?.productCount);
   return (
     <div>
       <Product productData={products} productCount={productCount} />

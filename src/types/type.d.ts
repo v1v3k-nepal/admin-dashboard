@@ -84,7 +84,7 @@ declare namespace Com {
 
   interface TproductData extends TproductFormData {
     _id: number;
-    createdAt: string;
+    createdAt?: string;
     actions: Array<string>;
   }
 
