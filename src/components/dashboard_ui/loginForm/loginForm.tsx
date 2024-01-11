@@ -65,6 +65,11 @@ const LoginForm = () => {
         {error && <span className="error">{error} </span>}
         {loginMessage && <span className="signin-message">{loginMessage}</span>}
       </form>
+      <div className="test-credentials">
+        <h2 className="title">Test Credentials</h2>
+        <p className="email">Email: testuser@gmail.com</p>
+        <p className="password">Password: testuser</p>
+      </div>
     </div>
   );
 };
