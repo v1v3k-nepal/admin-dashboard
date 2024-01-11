@@ -5,11 +5,14 @@ import "./_singleUserPage.scss";
 import { usePathname } from "next/navigation";
 import { UpdateUserFunc, fetchSingleUserDataFunc } from "../UserDataActions";
 import { toast } from "react-toastify";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const SingleUserPage = () => {
   const pathname = usePathname();
   const [formData, setFormData] = useState<Com.TuserFormData>();
   const [changePwdStatus, setChangePwdStatus] = useState(false);
+  const [data, setData] = useState<Com.TuserFormData>();
 
   const handlePwdChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.target.value == "true"
@@ -52,6 +55,9 @@ const SingleUserPage = () => {
     (async () => {
       const id = pathname.split("/").at(3) as string;
       const data: Com.TuserData = await fetchSingleUserDataFunc(id);
+      setTimeout(() => {
+        setData(data);
+      }, 2000);
 
       const initialFormData = {
         username: data?.username ? data?.username : "",
@@ -67,140 +73,192 @@ const SingleUserPage = () => {
     })();
   }, [pathname]);
   console.log(formData, "initial form data");
+
+  const skeletonStyle = {
+    marginTop: "10px",
+    borderRadius: "8px",
+    height: "50px",
+  };
   return (
     <div className="single-user-page">
       <div className="dp-name-container">
-        {
-          <div className="dp-container">
+        <div className="dp-container">
+          {data ? (
             <Image
-              src={formData?.userImg ? formData?.userImg : "/user-icon.jpg"}
+              src={
+                formData?.userImg
+                  ? (formData?.userImg as string)
+                  : "/user-icon.jpg"
+              }
               alt="user dp"
               fill
               className="dp"
             />
-          </div>
-        }
-        <span className="user-name">{formData?.username}</span>
+          ) : (
+            <Skeleton style={{ height: "100%", borderRadius: "10px" }} />
+          )}
+        </div>
+        {data ? (
+          <span className="user-name">{formData?.username}</span>
+        ) : (
+          <Skeleton style={{ height: "35px", width: "100%" }} />
+        )}
       </div>
       <form action={handleSubmit}>
         <div className="input">
           <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={handleChange}
-            value={formData?.username}
-            required
-          />
+          {data ? (
+            <input
+              type="text"
+              id="username"
+              name="username"
+              onChange={handleChange}
+              value={formData?.username}
+              required
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input">
           <label htmlFor="userImg">User Image</label>
-          <input
-            type="text"
-            id="userImg"
-            placeholder="User Image"
-            name="userImg"
-            onChange={handleChange}
-            value={formData?.userImg}
-            required
-          />
+          {data ? (
+            <input
+              type="text"
+              id="userImg"
+              placeholder="User Image"
+              name="userImg"
+              onChange={handleChange}
+              value={formData?.userImg}
+              required
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input">
           <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            name="email"
-            onChange={handleChange}
-            value={formData?.email}
-            required
-          />
+          {data ? (
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              name="email"
+              onChange={handleChange}
+              value={formData?.email}
+              required
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input">
           <label htmlFor="changePwd">Change Password ?</label>
-          <select
-            name="changePwd"
-            id="changePwd"
-            defaultValue={"false"}
-            onChange={handlePwdChange}
-          >
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
+          {data ? (
+            <select
+              name="changePwd"
+              id="changePwd"
+              defaultValue={"false"}
+              onChange={handlePwdChange}
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         {changePwdStatus && (
           <div className="input">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              name="password"
-              onChange={handleChange}
-              value={formData?.password}
-              required
-            />
+            {data ? (
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+                value={formData?.password}
+                required
+              />
+            ) : (
+              <Skeleton style={skeletonStyle} />
+            )}
           </div>
         )}
         <div className="input">
           <label htmlFor="Phone">Phone</label>
-          <input
-            type="phone"
-            id="phone"
-            placeholder="Phone"
-            name="phone"
-            onChange={handleChange}
-            value={formData?.phone}
-            required
-          />
+          {data ? (
+            <input
+              type="phone"
+              id="phone"
+              placeholder="Phone"
+              name="phone"
+              onChange={handleChange}
+              value={formData?.phone}
+              required
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input">
           <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            id="address"
-            placeholder="Address"
-            name="address"
-            onChange={handleChange}
-            value={formData?.address}
-            required
-          />
+          {data ? (
+            <input
+              type="text"
+              id="address"
+              placeholder="Address"
+              name="address"
+              onChange={handleChange}
+              value={formData?.address}
+              required
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input">
           <label htmlFor="isAdmin">Is Admin ?</label>
-          <select
-            name="isAdmin"
-            id="isAdmin"
-            onChange={handleSelectChange}
-            required
-            // defaultValue={formData?.isAdmin ? "true" : "false"}
-          >
-            <option value="false" selected={!formData?.isAdmin}>
-              No
-            </option>
-            <option value="true" selected={!!formData?.isAdmin}>
-              Yes
-            </option>
-          </select>
+          {data ? (
+            <select
+              name="isAdmin"
+              id="isAdmin"
+              onChange={handleSelectChange}
+              required
+              // defaultValue={formData?.isAdmin ? "true" : "false"}
+            >
+              <option value="false" selected={!formData?.isAdmin}>
+                No
+              </option>
+              <option value="true" selected={!!formData?.isAdmin}>
+                Yes
+              </option>
+            </select>
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input">
           <label htmlFor="isActive">Is Active ?</label>
-          <select
-            name="isActive"
-            id="isActive"
-            onChange={handleSelectChange}
-            // defaultValue={formData?.isActive ? "true" : "false"}
-            required
-          >
-            <option value="true" selected={!!formData?.isActive}>
-              Yes
-            </option>
-            <option value="false" selected={!formData?.isActive}>
-              No
-            </option>
-          </select>
+          {data ? (
+            <select
+              name="isActive"
+              id="isActive"
+              onChange={handleSelectChange}
+              // defaultValue={formData?.isActive ? "true" : "false"}
+              required
+            >
+              <option value="true" selected={!!formData?.isActive}>
+                Yes
+              </option>
+              <option value="false" selected={!formData?.isActive}>
+                No
+              </option>
+            </select>
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <button className="update-btn">Update</button>
       </form>

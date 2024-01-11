@@ -15,7 +15,7 @@ const Layout = (props: Props) => {
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    if (status !== "authenticated") router.push("/login");
+    if (status == "unauthenticated") router.push("/login");
     console.log(status, "/dashboard page");
   }, [status]);
 

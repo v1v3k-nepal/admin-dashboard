@@ -4,6 +4,7 @@ import "./globals.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthProvider from "@/components/dashboard_ui/authProvider/authProvider";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <ToastContainer />
-          {children}
-        </AuthProvider>
+        <SkeletonTheme baseColor="#9c9c9c" highlightColor="#444">
+          <AuthProvider>
+            <ToastContainer />
+            {children}
+          </AuthProvider>
+        </SkeletonTheme>
       </body>
     </html>
   );

@@ -9,18 +9,24 @@ import {
 import { usePathname } from "next/navigation";
 import { fetchProductDataFunc, updateProductFunc } from "../ProductDataActions";
 import { toast } from "react-toastify";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const SingleProductPage = () => {
   const pathname = usePathname();
   const [formData, setFormData] = useState<Com.TproductFormData>();
   const [categories, setCategories] = useState<Com.Tcategories>();
+  const [productData, setProductData] = useState<Com.TproductFormData>();
 
   useEffect(() => {
     (async () => {
       const data = (await fetchProductDataFunc(pathname)) as Com.TproductData;
       // setformData(data);
       setCategories(data?.category);
-      console.log(data);
+      setTimeout(() => {
+        setProductData(data);
+      }, 2000);
+      // console.log(data);
 
       const initialFormData: Com.TproductFormData = {
         productName: data?.productName ? data.productName : "",
@@ -56,92 +62,140 @@ const SingleProductPage = () => {
     }, 500);
   };
 
+  const skeletonStyle = {
+    borderRadius: "8px",
+    height: "50px",
+  };
+
   return (
     <div className="single-product-page">
       <div className="product-name-container">
-        <div className="product-container">
-          {formData?.productImg && (
+        <div className="product-image-container">
+          {productData ? (
             <Image
-              src={formData?.productImg}
+              src={formData?.productImg as string}
               alt="Product image"
-              fill
+              height={200}
+              width={200}
               className="product-img"
+            />
+          ) : (
+            <Skeleton
+              style={{
+                height: "200px",
+                width: "200px",
+                borderRadius: "10px",
+              }}
             />
           )}
         </div>
-        <span className="product-name">{formData?.productName}</span>
+        {productData ? (
+          <div className="product-name">{formData?.productName}</div>
+        ) : (
+          <Skeleton
+            style={{
+              height: "35px",
+              borderRadius: "8px",
+              width: "200px",
+            }}
+          />
+        )}
       </div>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label htmlFor="productName">Product Name</label>
-          <input
-            type="text"
-            id="productName"
-            name="productName"
-            placeholder="Product Name"
-            value={formData?.productName}
-            onChange={handleChange}
-            required
-          />
+          {productData ? (
+            <input
+              type="text"
+              id="productName"
+              name="productName"
+              placeholder="Product Name"
+              value={formData?.productName}
+              onChange={handleChange}
+              required
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="productImg">Product Image</label>
-          <input
-            type="text"
-            name="productImg"
-            placeholder="Product Image URL"
-            value={formData?.productImg}
-            onChange={handleChange}
-            required={true}
-          />
+          {productData ? (
+            <input
+              type="text"
+              name="productImg"
+              placeholder="Product Image URL"
+              value={formData?.productImg}
+              onChange={handleChange}
+              required={true}
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="price">Price</label>
-          <input
-            type="price"
-            id="price"
-            name="price"
-            placeholder="Price"
-            value={formData?.price}
-            onChange={handleChange}
-            required={true}
-          />
+          {productData ? (
+            <input
+              type="price"
+              id="price"
+              name="price"
+              placeholder="Price"
+              value={formData?.price}
+              onChange={handleChange}
+              required={true}
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="color">Color</label>
-          <input
-            type="text"
-            id="color"
-            name="color"
-            placeholder="Color"
-            value={formData?.color}
-            onChange={handleChange}
-            required={true}
-          />
+          {productData ? (
+            <input
+              type="text"
+              id="color"
+              name="color"
+              placeholder="Color"
+              value={formData?.color}
+              onChange={handleChange}
+              required={true}
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="stock">Stock</label>
-          <input
-            type="stock"
-            id="stock"
-            name="stock"
-            placeholder="Stock"
-            value={formData?.stock}
-            onChange={handleChange}
-            required={true}
-          />
+          {productData ? (
+            <input
+              type="stock"
+              id="stock"
+              name="stock"
+              placeholder="Stock"
+              value={formData?.stock}
+              onChange={handleChange}
+              required={true}
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="size">Size</label>
-          <input
-            type="text"
-            id="size"
-            name="size"
-            placeholder="Size"
-            value={formData?.size}
-            onChange={handleChange}
-            required={true}
-          />
+          {productData ? (
+            <input
+              type="text"
+              id="size"
+              name="size"
+              placeholder="Size"
+              value={formData?.size}
+              onChange={handleChange}
+              required={true}
+            />
+          ) : (
+            <Skeleton style={skeletonStyle} />
+          )}
         </div>
         <SelectCategory
           categories={formData?.category as Com.Tcategories}
@@ -156,16 +210,20 @@ const SingleProductPage = () => {
             >
           }
         />
-        <textarea
-          name="desc"
-          id="desc"
-          cols={30}
-          rows={10}
-          placeholder="Product Description"
-          value={formData?.desc}
-          onChange={handleChange}
-          required={true}
-        ></textarea>
+        {productData ? (
+          <textarea
+            name="desc"
+            id="desc"
+            cols={30}
+            rows={10}
+            placeholder="Product Description"
+            value={formData?.desc}
+            onChange={handleChange}
+            required={true}
+          ></textarea>
+        ) : (
+          <Skeleton style={{ height: "250px", borderRadius: "8px" }} />
+        )}
         <button>Update</button>
       </form>
     </div>
