@@ -1,19 +1,72 @@
-import React from 'react'
-import "./_loginForm.scss"
+"use client";
+import React, { useEffect, useState } from "react";
+import "./_loginForm.scss";
+// import { authenticate } from "@/app/lib/actions";
+import { signIn, useSession } from "next-auth/react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Span } from "next/dist/trace";
 
 const LoginForm = () => {
-  return (
-    <div className='login-container'>
-        <form action="">
-            <h1>Login</h1>
-            <div className="input-fields">
-                <input type="text" placeholder='Username'/>
-                <input type="password" name="password" placeholder='Password'/>
-            </div>
-            <button className='login-btn'>Login</button>
-        </form>
-    </div>
-  )
-}
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const params = useSearchParams();
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
-export default LoginForm
+  const initialFormData: Com.IloginFormData = {
+    email: "",
+    password: "",
+  };
+  const [formData, setFormData] = useState<Com.IloginFormData>(initialFormData);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [loginMessage, setLoginMessage] = useState<string>();
+
+  useEffect(() => {
+    setError(params.get("error") ?? "");
+    setSuccess(params.get("success") ?? "");
+    console.log(status, session, "login form");
+    if (status === "authenticated") router?.push("/dashboard");
+  }, [params, status]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const credentials = { email: formData.email, password: formData.password };
+    setLoginMessage("Signing In , Please wait a bit");
+    await signIn("credentials", credentials);
+  };
+  return (
+    <div className="login-container">
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <div className="input-fields">
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button className="login-btn" type="submit">
+          Login
+        </button>
+        {error && <span className="error">{error} </span>}
+        {loginMessage && <span className="signin-message">{loginMessage}</span>}
+      </form>
+    </div>
+  );
+};
+
+export default LoginForm;

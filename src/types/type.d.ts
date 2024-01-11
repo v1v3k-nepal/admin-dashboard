@@ -113,4 +113,9 @@ declare namespace Com {
     id: number;
     deleteWhat: string;
   };
+
+  interface IloginFormData {
+    email: string;
+    password: string;
+  }
 }

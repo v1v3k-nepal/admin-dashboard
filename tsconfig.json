@@ -23,6 +23,6 @@
     },
     // "typeRoots": ["src/types/type.d.ts"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/lib/utils.ts", "src/app/lib/models.ts", "src/components/dashboard_ui/users/users.tsx", "src/app/lib/fetchData.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/lib/utils.ts", "src/app/lib/models.ts", "src/components/dashboard_ui/users/users.tsx", "src/app/lib/fetchData.ts", "src/app/api/auth/[...nextauth]/route.js"],
   "exclude": ["node_modules"]
 }

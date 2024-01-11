@@ -115,3 +115,7 @@ export const User =
 export const Product =
   (mongoose.models?.Product as mongoose.Model<ProductDocument>) ||
   mongoose.model<ProductDocument>("Product", productSchema);
+
+// export const User = mongoose.models?.User || mongoose.model("User", userSchema);
+// export const Product =
+//   mongoose.models?.Product || mongoose.model("Product", productSchema);

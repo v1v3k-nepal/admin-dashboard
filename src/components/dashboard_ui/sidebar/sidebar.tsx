@@ -16,6 +16,7 @@ import {
 } from "react-icons/md";
 import "./_sidebar.scss";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
 
 const menuItems: Com.TmenuItems = [
   {
@@ -81,6 +82,10 @@ const menuItems: Com.TmenuItems = [
 ];
 
 const Sidebar = () => {
+  const { data: session, status } = useSession();
+  // if (status !== "authenticated") {
+  //   return <div></div>;
+  // } else
   return (
     <motion.div
       className="sidebar-container"
@@ -108,9 +113,7 @@ const Sidebar = () => {
       <ul className="category">
         {menuItems.map((category, catIndex) => (
           <li key={category.title}>
-            <span>
-              {category.title}
-            </span>
+            <span>{category.title}</span>
             {category.list.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -120,7 +123,7 @@ const Sidebar = () => {
                   delay: 0.3 * index * catIndex,
                   x: { type: "spring", stiffness: 60 },
                   opacity: { duration: 1 },
-                  ease: "easeIn"
+                  ease: "easeIn",
                 }}
               >
                 <MenuLink item={item} />
@@ -129,6 +132,17 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
+      <button
+        className="signout-btn"
+        onClick={async () => {
+          await signOut();
+        }}
+      >
+        <span>
+          <MdLogout />
+        </span>
+        <span>SignOut</span>
+      </button>
     </motion.div>
   );
 };

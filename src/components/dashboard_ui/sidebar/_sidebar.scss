@@ -47,4 +47,22 @@
     //     padding-left: 5px;
     // }
   }
+  .signout-btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 20px;
+    color: var(--textSoft);
+    font-weight: 700;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--hoverColor);
+      border-radius: 10px;
+    }
+  }
 }

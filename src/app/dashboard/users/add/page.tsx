@@ -49,8 +49,8 @@ const AddUser = () => {
     const status = await addUserFunc(formData);
     setTimeout(() => {
       status
-        ? toast.success("Product Added to Database Successfully")
-        : toast.error("Could not Add Product");
+        ? toast.success("User Added to Database Successfully")
+        : toast.error("Could not Add User");
     }, 500);
   };
 
