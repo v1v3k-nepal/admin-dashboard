@@ -81,20 +81,9 @@ const menuItems: Com.TmenuItems = [
   },
 ];
 
-interface Isession {
-  expires?: string;
-  user?: {
-    email?: string;
-    image?: string;
-    name?: string;
-  };
-}
-
-// {data:Isession, status:string}
-
 const Sidebar = () => {
   const { data, status } = useSession();
-  console.log(data, "sidebar");
+  // console.log(data, "sidebar");
   return (
     <motion.div
       className="sidebar-container"
