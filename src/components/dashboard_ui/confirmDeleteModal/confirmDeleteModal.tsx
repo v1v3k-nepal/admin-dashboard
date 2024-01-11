@@ -9,6 +9,7 @@ export const ConfirmDeleteModal = ({
   setDeleteModalVisibility,
   id,
   deleteWhat,
+  email,
 }: Com.DeleteModalProps) => {
   const handleNotify = (status: Boolean) => {
     console.log(status, "i am delete status");
@@ -18,12 +19,16 @@ export const ConfirmDeleteModal = ({
   };
 
   const handleDelete = async () => {
-    if (deleteWhat == "user") {
-      const status = await deleteUser(id);
-      handleNotify(status);
-    } else if (deleteWhat == "product") {
-      const status = await deleteProduct(id);
-      handleNotify(status);
+    if (email !== "testuser@gmail.com") {
+      if (deleteWhat == "user") {
+        const status = await deleteUser(id);
+        handleNotify(status);
+      } else if (deleteWhat == "product") {
+        const status = await deleteProduct(id);
+        handleNotify(status);
+      }
+    } else {
+      toast.error("Deleting this particular user is restricted by developer");
     }
     setDeleteModalVisibility("none");
   };

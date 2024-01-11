@@ -112,6 +112,7 @@ declare namespace Com {
     setDeleteModalVisibility: React.Dispatch<React.SetStateAction<string>>;
     id: number;
     deleteWhat: string;
+    email?: string;
   };
 
   interface IloginFormData {

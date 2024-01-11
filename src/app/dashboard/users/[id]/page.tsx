@@ -34,14 +34,18 @@ const SingleUserPage = () => {
   };
 
   const handleSubmit = async () => {
-    const id = pathname.split("/").at(3) as string;
-    const status =
-      formData && (await UpdateUserFunc(id, formData, changePwdStatus));
-    setTimeout(() => {
-      status
-        ? toast.success("User Data Updated Successfully")
-        : toast.error("Could not Update User Data");
-    }, 500);
+    if (formData?.email !== "testuser@gmail.com") {
+      const id = pathname.split("/").at(3) as string;
+      const status =
+        formData && (await UpdateUserFunc(id, formData, changePwdStatus));
+      setTimeout(() => {
+        status
+          ? toast.success("User Data Updated Successfully")
+          : toast.error("Could not Update User Data");
+      }, 500);
+    } else {
+      toast.error("Modifying this particular user is restricted by developer");
+    }
   };
 
   useEffect(() => {

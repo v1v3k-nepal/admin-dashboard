@@ -18,9 +18,11 @@ const UsersUI = ({
   const [deleteModalVisibility, setDeleteModalVisibility] =
     useState<string>("none");
   const [userIdToDelete, setUserIdToDelete] = useState<number>();
-  const handleDelete = (id: number) => {
+  const [email, setEmail] = useState<string>();
+  const handleDelete = (id: number, email: string) => {
     setDeleteModalVisibility("block");
     setUserIdToDelete(id);
+    setEmail(email);
   };
 
   return (
@@ -92,7 +94,9 @@ const UsersUI = ({
                   </Link>
                   <button
                     className="delete"
-                    onClick={() => handleDelete(obj?._id as number)}
+                    onClick={() =>
+                      handleDelete(obj?._id as number, obj?.email as string)
+                    }
                   >
                     {obj?.actions[1]}
                   </button>
@@ -106,6 +110,7 @@ const UsersUI = ({
         <ConfirmDeleteModal
           setDeleteModalVisibility={setDeleteModalVisibility}
           id={userIdToDelete as number}
+          email={email}
           deleteWhat="user"
         />
       </div>
