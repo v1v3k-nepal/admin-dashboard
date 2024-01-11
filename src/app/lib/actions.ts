@@ -45,13 +45,21 @@ export const addUser = async (formData: Com.TuserFormData) => {
   }
 };
 
-export const updateUser = async (id: string, data: Com.TuserFormData) => {
+export const updateUser = async (
+  id: string,
+  data: Com.TuserFormData,
+  changePwd: boolean
+) => {
   const { password } = data;
-  // const salt = await bcrypt.genSalt(10);
-  const passwordHash = await bcrypt.hash(password, 10);
+  let passwordHash: string = "";
+  changePwd && (passwordHash = await bcrypt.hash(password, 10));
+
   try {
     connectToDB();
-    await User.findByIdAndUpdate(id, { ...data, password: passwordHash });
+    await User.findByIdAndUpdate(id, {
+      ...data,
+      password: changePwd ? passwordHash : password,
+    });
     revalidatePath("/dashboard/users");
     return true;
   } catch (e) {
@@ -125,16 +133,3 @@ export const updateProduct = async (id: string, data: Com.TproductFormData) => {
     return false;
   }
 };
-
-// export const authenticate = async (formData: Com.IloginFormData) => {
-//   const { email, password } = formData;
-//   try {
-//     await signIn("credentials", { email, password });
-//   } catch (error: any) {
-//     console.log(error, "i am from action.ts");
-//     if (error.message.includes("credentialssignin")) {
-//       return { error: "Wrong Credentials" };
-//     }
-//     throw error;
-//   }
-// };

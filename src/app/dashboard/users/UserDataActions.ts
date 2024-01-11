@@ -12,7 +12,7 @@ export const fetchSingleUserDataFunc = async (id: string) => {
   return data;
 };
 
-export const UpdateUserFunc = async (id: string, data: Com.TuserFormData) => {
-  const status = await updateUser(id, data);
+export const UpdateUserFunc = async (id: string, data: Com.TuserFormData, changePwd:boolean) => {
+  const status = await updateUser(id, data, changePwd);
   return status;
 };

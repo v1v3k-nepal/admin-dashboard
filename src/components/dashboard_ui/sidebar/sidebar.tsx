@@ -81,11 +81,20 @@ const menuItems: Com.TmenuItems = [
   },
 ];
 
+interface Isession {
+  expires?: string;
+  user?: {
+    email?: string;
+    image?: string;
+    name?: string;
+  };
+}
+
+// {data:Isession, status:string}
+
 const Sidebar = () => {
-  const { data: session, status } = useSession();
-  // if (status !== "authenticated") {
-  //   return <div></div>;
-  // } else
+  const { data, status } = useSession();
+  console.log(data, "sidebar");
   return (
     <motion.div
       className="sidebar-container"
@@ -98,15 +107,17 @@ const Sidebar = () => {
       }}
     >
       <div className="user">
-        <Image
-          src="/astronaut.png"
-          alt="user image"
-          height={50}
-          width={50}
-          className="userImg"
-        />
+        {data?.user?.image && (
+          <Image
+            src={data?.user?.image}
+            alt="user image"
+            height={50}
+            width={50}
+            className="userImg"
+          />
+        )}
         <div className="userDetails">
-          <span className="userName">Vivek Nepal</span>
+          <span className="userName">{data?.user?.name}</span>
           <span className="userRole">Administrator</span>
         </div>
       </div>

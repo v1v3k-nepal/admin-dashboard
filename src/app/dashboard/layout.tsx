@@ -20,7 +20,7 @@ const Layout = (props: Props) => {
   }, [status]);
 
   if (status == "loading") {
-    return <div>Signing Out</div>;
+    return <div>Loading</div>;
   } else if (status == "authenticated")
     return (
       <div className="main-container">

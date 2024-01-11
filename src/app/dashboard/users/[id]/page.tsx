@@ -9,6 +9,13 @@ import { toast } from "react-toastify";
 const SingleUserPage = () => {
   const pathname = usePathname();
   const [formData, setFormData] = useState<Com.TuserFormData>();
+  const [changePwdStatus, setChangePwdStatus] = useState(false);
+
+  const handlePwdChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    e.target.value == "true"
+      ? setChangePwdStatus(true)
+      : setChangePwdStatus(false);
+  };
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     formData &&
@@ -28,7 +35,8 @@ const SingleUserPage = () => {
 
   const handleSubmit = async () => {
     const id = pathname.split("/").at(3) as string;
-    const status = formData && (await UpdateUserFunc(id, formData));
+    const status =
+      formData && (await UpdateUserFunc(id, formData, changePwdStatus));
     setTimeout(() => {
       status
         ? toast.success("User Data Updated Successfully")
@@ -44,7 +52,7 @@ const SingleUserPage = () => {
       const initialFormData = {
         username: data?.username ? data?.username : "",
         email: data?.email ? data?.email : "",
-        password: data?.username ? data?.username : "",
+        password: data?.username ? data?.password : "",
         phone: data?.phone ? data?.phone : "",
         isAdmin: data?.isAdmin,
         isActive: data?.isActive,
@@ -107,17 +115,31 @@ const SingleUserPage = () => {
           />
         </div>
         <div className="input">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-            value={formData?.password}
-            required
-          />
+          <label htmlFor="changePwd">Change Password ?</label>
+          <select
+            name="changePwd"
+            id="changePwd"
+            defaultValue={"false"}
+            onChange={handlePwdChange}
+          >
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
         </div>
+        {changePwdStatus && (
+          <div className="input">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+              value={formData?.password}
+              required
+            />
+          </div>
+        )}
         <div className="input">
           <label htmlFor="Phone">Phone</label>
           <input

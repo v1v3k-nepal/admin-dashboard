@@ -4,7 +4,6 @@ import "./_loginForm.scss";
 // import { authenticate } from "@/app/lib/actions";
 import { signIn, useSession } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Span } from "next/dist/trace";
 
 const LoginForm = () => {
   const [error, setError] = useState("");
@@ -29,6 +28,10 @@ const LoginForm = () => {
     setSuccess(params.get("success") ?? "");
     console.log(status, session, "login form");
     if (status === "authenticated") router?.push("/dashboard");
+    error &&
+      setTimeout(() => {
+        router.push("/login");
+      }, 4000);
   }, [params, status]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
